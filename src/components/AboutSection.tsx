@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Award,
+  Bot,
   Code,
   Trophy,
   Users,
@@ -10,6 +11,7 @@ import {
   ExternalLink,
   GraduationCap,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const AboutSection = () => {
   return (
@@ -98,20 +100,19 @@ const AboutSection = () => {
               {/* Image Card */}
               <div className="relative w-80 h-96 lg:w-96 lg:h-[28rem] rounded-2xl overflow-hidden shadow-2xl border-4 border-white group-hover:scale-105 transition-transform duration-500">
                 <img
-                  src="/lovable-uploads/75cc9876-0ee7-40e7-b84a-99037d1a220f.png"
+                  src="/All_Certificate_Photos/My_Photo.png"
                   alt="Divyesh Gangera - Full Stack Developer"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
               </div>
             </div>
           </div>
-
         </div>
 
         {/* Major Achievements Section */}
         <div className="mb-20">
           <h3 className="text-3xl font-semibold text-gray-800 mb-12 text-center">
-            🌟   Major Achievements
+            🌟 Major Achievements
           </h3>
 
           {/* NIH Finalist */}
@@ -132,14 +133,25 @@ const AboutSection = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  🎯 <strong>Grand Finale Qualifier!</strong>  one of Gujarat's most prestigious innovation competitions, organized under SSIP 2.0 by the Education Department, Government of Gujarat. 
-                 
-                  <p>Among thousands of talented participants, our team secured a spot in the grand finale with our project — a <strong> Government Scheme Portal </strong> built using Angular.js, HTML, CSS, and Express.js.
-                  The portal aimed to simplify access to government welfare schemes through intelligent filtering and a user-friendly interface. 
-                  I contributed to building a responsive and user-friendly UI, integrating frontend and backend components, ensuring seamless API integration and dynamic data handling. Our collaborative efforts, version-controlled via GitHub, not only enhanced team efficiency but also resulted in a technically robust and socially impactful solution. 
-                  </p> 
-                </p>
+                <div className="text-gray-700 leading-relaxed mb-4">
+                  🎯 <strong>Grand Finale Qualifier!</strong> one of Gujarat's
+                  most prestigious innovation competitions, organized under SSIP
+                  2.0 by the Education Department, Government of Gujarat.
+                  <p>
+                    Among thousands of talented participants, our team secured a
+                    spot in the grand finale with our project — a{" "}
+                    <strong> Government Scheme Portal </strong> built using
+                    Angular.js, HTML, CSS, and Express.js. The portal aimed to
+                    simplify access to government welfare schemes through
+                    intelligent filtering and a user-friendly interface. I
+                    contributed to building a responsive and user-friendly UI,
+                    integrating frontend and backend components, ensuring
+                    seamless API integration and dynamic data handling. Our
+                    collaborative efforts, version-controlled via GitHub, not
+                    only enhanced team efficiency but also resulted in a
+                    technically robust and socially impactful solution.
+                  </p>
+                </div>
                 <div className="bg-purple-100 p-2 rounded-lg mb-4">
                   <p className="text-purple-800 font-medium">
                     🏅 Achievement Journey:
@@ -147,7 +159,10 @@ const AboutSection = () => {
                   <ul className="text-purple-700 mt-2 space-y-1">
                     <li>• Regional Round Participation (4th November 2023)</li>
                     <li>• Grand Finale Qualification (25th November 2023)</li>
-                    <li>• National level competition at Pandit Deendayal Energy University , Gandhinagar</li>
+                    <li>
+                      • National level competition at Pandit Deendayal Energy
+                      University , Gandhinagar
+                    </li>
                   </ul>
                 </div>
                 <div className="flex gap-3">
@@ -156,9 +171,10 @@ const AboutSection = () => {
                       const modal = document.createElement("div");
                       modal.className =
                         "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+                      // NIH Regional Certificate Modal
                       modal.innerHTML = `
                         <div class="bg-white p-4 rounded-lg max-w-3xl max-h-[90vh] overflow-auto">
-                          <img src="/lovable-uploads/e2674f69-facc-4f17-946e-05c3ff74574a.png" alt="NIH Regional Certificate" class="w-full h-auto" />
+                          <img src="/All_Certificate_Photos/NIH_Regional_Round_Certificate.png" alt="NIH Regional Certificate" class="w-full h-auto" />
                           <button class="mt-4 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700" onclick="this.parentElement.parentElement.remove()">Close</button>
                         </div>
                       `;
@@ -169,14 +185,16 @@ const AboutSection = () => {
                     <Award className="h-4 w-4 mr-2" />
                     Regional Certificate
                   </button>
+
                   <button
                     onClick={() => {
                       const modal = document.createElement("div");
                       modal.className =
                         "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+                      // NIH Final Certificate Modal
                       modal.innerHTML = `
                         <div class="bg-white p-4 rounded-lg max-w-3xl max-h-[90vh] overflow-auto">
-                          <img src="/lovable-uploads/990eb2f6-429a-4769-a765-9acccdf31147.png" alt="NIH Final Certificate" class="w-full h-auto" />
+                          <img src="/All_Certificate_Photos/NIH_Final_Certificate.png" alt="NIH Final Certificate" class="w-full h-auto" />
                           <button class="mt-4 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700" onclick="this.parentElement.parentElement.remove()">Close</button>
                         </div>
                       `;
@@ -195,7 +213,7 @@ const AboutSection = () => {
                 </div>
                 <div className="flex justify-center">
                   <img
-                    src="/lovable-uploads/b87c6f38-e1f5-434d-9b31-bf886a0a46e0.png"
+                    src="/All_Certificate_Photos/NIH_Final_Team_Photo.png"
                     alt="NIH Team at Grand Finale"
                     className="w-64 h-48 object-cover rounded-xl shadow-lg"
                   />
@@ -227,13 +245,31 @@ const AboutSection = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-700 leading-relaxed mb-4">
+                <div className="text-gray-700 leading-relaxed mb-4">
                   🎉 <strong>Victory at HackTheSpring!</strong> Led our team
                   "Tech Titans" to secure first place in the ideathon
-                  competition with our <strong>Virtual Reality Therapy for Mental & Physical Health</strong> project.
-                  <p> Developed an immersive VR-based therapy solution aimed at improving both mental and physical well-being. The project leveraged virtual environments to deliver calming, engaging, and personalized therapeutic experiences, offering innovative support for stress relief, emotional regulation, and physical rehabilitation.</p>
-                  From ideation to execution, I guided the team through the complete development cycle — fostering collaboration, driving creativity, and ensuring technical excellence at every stage. This experience not only showcased our ability to tackle real-world health challenges, but also strengthened my leadership, strategic thinking, and passion for building meaningful tech solutions.
-                </p>
+                  competition with our{" "}
+                  <strong>
+                    Virtual Reality Therapy for Mental & Physical Health
+                  </strong>{" "}
+                  project.
+                  <p>
+                    {" "}
+                    Developed an immersive VR-based therapy solution aimed at
+                    improving both mental and physical well-being. The project
+                    leveraged virtual environments to deliver calming, engaging,
+                    and personalized therapeutic experiences, offering
+                    innovative support for stress relief, emotional regulation,
+                    and physical rehabilitation.
+                  </p>
+                  From ideation to execution, I guided the team through the
+                  complete development cycle — fostering collaboration, driving
+                  creativity, and ensuring technical excellence at every stage.
+                  This experience not only showcased our ability to tackle
+                  real-world health challenges, but also strengthened my
+                  leadership, strategic thinking, and passion for building
+                  meaningful tech solutions.
+                </div>
                 <div className="bg-yellow-100 p-4 rounded-lg mb-4">
                   <p className="text-yellow-800 font-medium">
                     🌟 Complete Project Journey:
@@ -241,7 +277,8 @@ const AboutSection = () => {
                   <ul className="text-yellow-700 mt-2 space-y-1">
                     <li>• Team Leader : Tech Titans - Divyesh Gangera</li>
                     <li>
-                      • Project : Virtual Reality Therapy for Mental & Physical Health
+                      • Project : Virtual Reality Therapy for Mental & Physical
+                      Health
                     </li>
                     {/* <li>
                       • Duration : 4th & 5th Semester Design Engineering Project
@@ -250,10 +287,12 @@ const AboutSection = () => {
                       • Achievement : Certificate of Merit for 1st Rank Winner
                     </li>
                     <li>
-                      •  Location: Government Engineering College, Sector 28, Gandhinagar
+                      • Location: Government Engineering College, Sector 28,
+                      Gandhinagar
                     </li>
                     <li>
-                      • Impact : Innovative healthcare solution integrating VR and AI to enhance well-being
+                      • Impact : Innovative healthcare solution integrating VR
+                      and AI to enhance well-being
                     </li>
                     <li>
                       • Leadership : Team collaboration and project management
@@ -265,9 +304,10 @@ const AboutSection = () => {
                     const modal = document.createElement("div");
                     modal.className =
                       "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+                    // HackTheSpring Certificate Modal
                     modal.innerHTML = `
                       <div class="bg-white p-4 rounded-lg max-w-3xl max-h-[90vh] overflow-auto">
-                        <img src="/lovable-uploads/69d748c2-7f58-4b20-8ed2-1133f879dc34.png" alt="HackTheSpring Certificate of Merit" class="w-full h-auto" />
+                        <img src="/All_Certificate_Photos/Ideathon_Winner_Certificate.png" alt="HackTheSpring Certificate of Merit" class="w-full h-auto" />
                         <button class="mt-4 px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700" onclick="this.parentElement.parentElement.remove()">Close</button>
                       </div>
                     `;
@@ -285,7 +325,7 @@ const AboutSection = () => {
                 </div>
                 <div className="flex justify-center">
                   <img
-                    src="/lovable-uploads/5dc2985c-4960-4610-8cd8-609e9d737b52.png"
+                    src="/All_Certificate_Photos/HackTheSpring'24_Ideathon_Team_Photo.png"
                     alt="HackTheSpring Team"
                     className="w-64 h-48 object-cover rounded-xl shadow-lg"
                   />
@@ -312,23 +352,41 @@ const AboutSection = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  🌟 <strong>Leadership in Event Management!</strong> Serving as
-                  a core team member and coordinator for HackTheSpring'25,
-                  organizing one of the most anticipated hackathons in the
-                  region. This role showcases my leadership capabilities and
-                  commitment to fostering innovation in the tech community.
-                </p>
+                <div className="text-gray-700 leading-relaxed mb-4">
+                  🌟 <strong>Leadership in Event Management !</strong> Serving
+                  as a <strong>Core Team Member (Coordinator)</strong> for
+                  HackTheSpring'25,organizing one of the most anticipated
+                  hackathons in the region.
+                  <p>
+                    From managing logistics and participant engagement to
+                    solving real-time technical issues. This journey not only
+                    reflects my leadership growth but also my dedication to
+                    creating impactful experiences and supporting innovation
+                    within the tech community.
+                  </p>
+                </div>
                 <div className="bg-green-100 p-4 rounded-lg mb-4">
                   <p className="text-green-800 font-medium">
                     🎯 Responsibilities & Impact:
                   </p>
                   <ul className="text-green-700 mt-2 space-y-1">
                     <li>• Event coordination and management</li>
-                    <li>• Participant engagement and support</li>
+                    <li>
+                      • Managed participant support and on-ground logistics
+                    </li>
+                    <li>
+                      • Resolved Wi-Fi issues during workshops to ensure
+                      technical continuity
+                    </li>
                     <li>• Technical workshop organization</li>
-                    <li>• Community building and networking</li>
-                    <li>• Mentoring upcoming developers</li>
+                    <li>
+                      • Fostered collaboration, networking, and a positive event
+                      experience
+                    </li>
+                    <li>
+                      • Demonstrated leadership in high-pressure, live event
+                      environment
+                    </li>
                   </ul>
                 </div>
                 <button
@@ -336,9 +394,10 @@ const AboutSection = () => {
                     const modal = document.createElement("div");
                     modal.className =
                       "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+                    // Core Team Certificate Modal
                     modal.innerHTML = `
                       <div class="bg-white p-4 rounded-lg max-w-3xl max-h-[90vh] overflow-auto">
-                        <img src="/lovable-uploads/b01e03e1-aadb-49c1-956c-b36df8368fdc.png" alt="Core Team Certificate" class="w-full h-auto" />
+                        <img src="/All_Certificate_Photos/HackTheSpring'25_Cordinator_Certificate.png" alt="Core Team Certificate" class="w-full h-auto" />
                         <button class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700" onclick="this.parentElement.parentElement.remove()">Close</button>
                       </div>
                     `;
@@ -350,14 +409,14 @@ const AboutSection = () => {
                   View Certificate
                 </button>
               </div>
-              <div className="flex flex-col justify-center space-y-8">
+              <div className="flex flex-col justify-center space-y-20">
                 <div className="flex justify-center">
                   <div className="text-8xl">👥</div>
                 </div>
                 <div className="flex justify-center">
                   <img
-                    src="/lovable-uploads/f9ead4e5-d622-4022-a942-99a88650187a.png"
-                    alt="Core Team Group"
+                    src="/All_Certificate_Photos/HackTheSpring'25_Cordinator_Team_Photo.png"
+                    alt="Team Photo"
                     className="w-64 h-48 object-cover rounded-xl shadow-lg"
                   />
                 </div>
@@ -370,39 +429,56 @@ const AboutSection = () => {
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
                 <div className="flex items-center mb-4">
-                  <Code className="h-10 w-10 text-orange-600 mr-4" />
+                  <Bot className="h-10 w-10 text-purple-600 mr-4" />
                   <div>
                     <h4 className="text-2xl font-bold text-gray-800">
-                      AI Training Certificate
+                      AI And Machine Learning Training Certificate
                     </h4>
                     <div className="flex items-center text-orange-600 mt-2">
                       <Calendar className="h-4 w-4 mr-2" />
                       <span className="font-medium">Feb 3 - Feb 12, 2025</span>
                       <Award className="h-4 w-4 ml-4 mr-2" />
-                      <span className="font-medium">
-                        Government Engineering College
-                      </span>
+                      <span className="font-medium">GEC , Gandhinagar</span>
                     </div>
                   </div>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   🤖 <strong>Advanced AI & Machine Learning Training!</strong>{" "}
-                  Successfully completed intensive training program on
-                  Introduction to AI and Machine Learning organized at
-                  Government Engineering College, Gandhinagar. This training
-                  enhanced my understanding of cutting-edge AI technologies and
-                  their practical applications.
+                  Successfully completed a 54+ hour certified training program
+                  on <strong>Introduction to AI and Machine Learning</strong> at
+                  Government Engineering College, Gandhinagar, organized in
+                  collaboration with BSE Institute and RUSA. This program
+                  combined theoretical foundations with hands-on applications,
+                  enhancing my understanding of real-world AI and ML workflows.
                 </p>
                 <div className="bg-orange-100 p-4 rounded-lg mb-4">
                   <p className="text-orange-800 font-medium">
                     🧠 Learning Outcomes:
                   </p>
                   <ul className="text-orange-700 mt-2 space-y-1">
-                    <li>• Machine Learning fundamentals and algorithms</li>
-                    <li>• AI application development</li>
-                    <li>• Data science and analytics</li>
-                    <li>• Industry best practices and trends</li>
-                    <li>• Hands-on project implementation</li>
+                    <li>
+                      • Gained in-depth knowledge of Machine Learning
+                      fundamentals, including supervised and unsupervised
+                      algorithms.
+                    </li>
+                    <li>
+                      • Learned the basics of Artificial Intelligence, model
+                      training, and predictive analysis.
+                    </li>
+                    <li>
+                      • Developed a Placement Prediction Model using historical
+                      student data to forecast employability outcomes.
+                    </li>
+                    <li>
+                      • Worked on building and training a basic language
+                      translator, applying concepts of NLP and data
+                      preprocessing.
+                    </li>
+                    <li>
+                      • Successfully completed over 54 hours of guided learning
+                      and hands-on project work, fulfilling all evaluation
+                      criteria.
+                    </li>
                   </ul>
                 </div>
                 <button
@@ -410,9 +486,10 @@ const AboutSection = () => {
                     const modal = document.createElement("div");
                     modal.className =
                       "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+                    // AI Training Certificate Modal
                     modal.innerHTML = `
                       <div class="bg-white p-4 rounded-lg max-w-3xl max-h-[90vh] overflow-auto">
-                        <img src="/lovable-uploads/5f4cf882-37bd-4ce3-8704-b4914f232e64.png" alt="AI Training Certificate" class="w-full h-auto" />
+                        <img src="/All_Certificate_Photos/Ai_And_Ml_Training_Certificate.png" alt="AI Training Certificate" class="w-full h-auto" />
                         <button class="mt-4 px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700" onclick="this.parentElement.parentElement.remove()">Close</button>
                       </div>
                     `;
@@ -423,8 +500,18 @@ const AboutSection = () => {
                   <Code className="h-4 w-4 mr-2" />
                   View Certificate
                 </button>
+
+                <a
+                  href="https://github.com/divyeshgangara2211/AI-And-ML-Training-Projects"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-5 py-2 ml-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
+                >
+                  <Code className="h-4 w-4 mr-2" />
+                  View Project
+                </a>
               </div>
-              <div className="flex flex-col justify-center space-y-8">
+              <div className="flex flex-col justify-center space-y-20">
                 <div className="flex justify-center">
                   <div className="text-8xl">🤖</div>
                 </div>
@@ -434,7 +521,7 @@ const AboutSection = () => {
                       AI & ML Training
                     </p>
                     <p className="text-orange-600">
-                      Government Engineering College
+                      Government Engineering College , Gandhinagar
                     </p>
                   </div>
                 </div>
@@ -442,8 +529,8 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Academic Excellence */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-8 border-2 border-blue-200">
+          {/* Academic Excellence 5th sem  */}
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-8 mb-8 border-2 border-blue-200">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
                 <div className="flex items-center mb-4">
@@ -475,7 +562,7 @@ const AboutSection = () => {
                   </p>
                   <ul className="text-blue-700 mt-2 space-y-1">
                     <li>
-                      • <strong>CGPA: 8.70</strong> - Final Year Student
+                      • <strong>CGPA: 8.70</strong> - 5th Semester
                     </li>
                     <li>• Design Engineering - II A: AA Grade</li>
                     <li>• Analysis and Design of Algorithms: AB Grade</li>
@@ -489,9 +576,10 @@ const AboutSection = () => {
                     const modal = document.createElement("div");
                     modal.className =
                       "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+                    // Academic 5th Sem Result Modal
                     modal.innerHTML = `
                       <div class="bg-white p-4 rounded-lg max-w-3xl max-h-[90vh] overflow-auto">
-                        <img src="/lovable-uploads/370ed6ae-2ee5-4f0b-9f00-290e1bf7ae96.png" alt="Academic Result" class="w-full h-auto" />
+                        <img src="/All_Certificate_Photos/5th-Sem-Result.png" alt="Academic 5th Sem Result" class="w-full h-auto" />
                         <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" onclick="this.parentElement.parentElement.remove()">Close</button>
                       </div>
                     `;
@@ -516,13 +604,100 @@ const AboutSection = () => {
                       Computer Engineering
                     </p>
                     <p className="text-blue-500">
-                      Gujarat Technological University
+                      Gujarat Technological University , Ahmedabad
                     </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Academic Excellence 6th sem */}
+          <div className="bg-gradient-to-r from-green-50 to-teal-50 rounded-3xl p-8 mb-8 border-2 border-green-200">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="flex items-center mb-4">
+                  <GraduationCap className="h-10 w-10 text-green-600 mr-4" />
+                  <div>
+                    <h4 className="text-2xl font-bold text-gray-800">
+                      Academic Excellence
+                    </h4>
+                    <div className="flex items-center text-green-600 mt-2">
+                      <Calendar className="h-4 w-4 mr-2" />
+                      <span className="font-medium">
+                        BE Semester 6 - May 2025
+                      </span>
+                      <Award className="h-4 w-4 ml-4 mr-2" />
+                      <span className="font-medium">Computer Engineering</span>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  🎓 <strong>Outstanding Academic Performance!</strong> Achieved
+                  a remarkable CGPA of 8.65, showcasing a strong grasp of core
+                  subjects and a commitment to excellence in my Computer
+                  Engineering studies.
+                </p>
+                <div className="bg-green-100 p-4 rounded-lg mb-4">
+                  <p className="text-green-800 font-medium">
+                    📊 Academic Highlights:
+                  </p>
+                  <ul className="text-green-700 mt-2 space-y-1">
+                    <li>
+                      • <strong>CGPA: 8.65</strong> - 6th Semester
+                    </li>
+                    <li>• Design Engineering II B: AB Grade</li>
+                    {/* <li>
+                      • Integrated Personality Development Course: AA Grade
+                    </li> */}
+                    <li>• Theory of Computation: AB Grade</li>
+                    <li>• Advanced Java Programming: AB Grade</li>
+                    <li>• Microprocessor and Interfacing: BC Grade</li>
+                    <li>• Data Mining: AB Grade</li>
+                    <li>• IOT and Applications: BB Grade</li>
+                  </ul>
+                </div>
+                <button
+                  onClick={() => {
+                    const modal = document.createElement("div");
+                    modal.className =
+                      "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+                    // Academic 6th Sem Result Modal
+                    modal.innerHTML = `
+            <div class="bg-white p-4 rounded-lg max-w-3xl max-h-[90vh] overflow-auto">
+              <img src="/All_Certificate_Photos/6th sem Result.png" alt="Academic 6th Sem Result" class="w-full h-auto" />
+              <button class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700" onclick="this.parentElement.parentElement.remove()">Close</button>
+            </div>
+          `;
+                    document.body.appendChild(modal);
+                  }}
+                  className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                >
+                  <GraduationCap className="h-4 w-4 mr-2" />
+                  View Result
+                </button>
+              </div>
+              <div className="flex flex-col justify-center space-y-8">
+                <div className="flex justify-center">
+                  <div className="text-8xl ">🎓</div>
+                </div>
+                <div className="flex justify-center">
+                  <div className="bg-green-100 p-6 rounded-xl text-center">
+                    <p className="text-green-800 font-bold text-2xl">
+                      CGPA: 8.65
+                    </p>
+                    <p className="text-green-600 font-semibold">
+                      Computer Engineering
+                    </p>
+                    <p className="text-green-500">
+                      Gujarat Technological University, Ahmedabad
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
