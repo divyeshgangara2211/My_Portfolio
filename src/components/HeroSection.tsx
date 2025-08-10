@@ -7,12 +7,13 @@ const HeroSection = () => {
     <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
+          
           {/* Left Content */}
           <div className="text-center lg:text-left space-y-8 animate-fade-in">
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                 Hi, I'm{" "}
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-700 to-purple-700 bg-clip-text text-transparent">
                   Divyesh Gangera
                 </span>
               </h1>
@@ -47,8 +48,9 @@ const HeroSection = () => {
                 variant="outline"
                 className="border-2 border-gray-300 hover:border-blue-500 hover:text-blue-600 transition-all duration-300 group"
                 onClick={() => {
-                  // Resume PDF functionality - add your resume PDF link here
-                  const resumeUrl = "/resume.pdf"; // Replace with your actual resume PDF path
+                  // Resume PDF functionality 
+                  // const resumeUrl = "https://drive.google.com/drive/folders/1BRKLC9WhGWm-3Yej3X8JGWJNcX0b5jyD"; 
+                  const resumeUrl = "/All_Certificate_Photos/Resume_Divyesh_Gangera.pdf" ; 
                   window.open(resumeUrl, "_blank");
                 }}
               >
@@ -67,8 +69,8 @@ const HeroSection = () => {
               {/* Image Card */}
               <div className="relative w-80 h-96 lg:w-96 lg:h-[28rem] rounded-2xl overflow-hidden shadow-2xl border-4 border-white group-hover:scale-105 transition-transform duration-500">
                 <img
-                  src="/lovable-uploads/75cc9876-0ee7-40e7-b84a-99037d1a220f.png"
-                  alt="Divyesh Gangera - Full Stack Developer"
+                  src="/All_Certificate_Photos/My_Photo.png"
+                  alt="Divyesh Gangera - MERN Stack Developer"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
               </div>

@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Star, Instagram } from "lucide-react";
+import { Github, Linkedin, Star, Instagram , Mail} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
@@ -170,7 +169,7 @@ const ContactSection = () => {
           <h3 className="text-2xl font-bold text-gray-800 mb-8">Let's Build Together</h3>
           <div className="flex justify-center space-x-6 mb-6">
             <a
-              href="https://linkedin.com/in/divyeshgangera22"
+              href="https://www.linkedin.com/in/divyesh-gangera-916468274/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center w-16 h-16 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-200 hover:scale-110 transform shadow-lg"
@@ -178,7 +177,7 @@ const ContactSection = () => {
               <Linkedin className="h-8 w-8" />
             </a>
             <a
-              href="https://github.com/divyeshgangera22"
+              href="https://github.com/divyeshgangara2211"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center w-16 h-16 bg-gray-800 text-white rounded-full hover:bg-gray-900 transition-all duration-200 hover:scale-110 transform shadow-lg"
@@ -186,7 +185,7 @@ const ContactSection = () => {
               <Github className="h-8 w-8" />
             </a>
             <a
-              href="https://instagram.com/divyeshgangera22"
+              href="https://instagram.com/divyeshgangera22" // change after find
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-200 hover:scale-110 transform shadow-lg"
@@ -194,10 +193,22 @@ const ContactSection = () => {
               <Instagram className="h-8 w-8" />
             </a>
           </div>
-          <p className="text-gray-600 text-lg font-medium">
-            Made with ❤️ by Divyesh
+          {/* <p className="text-gray-600 text-lg font-medium">
+            Made with ❤️ by Divyesh Gangera
+          </p> */}
+          <p className="text-black-900 mb-8 max-w-2xl mx-auto">
+            I'm currently looking for new opportunities and collaborations. If you have a project in mind or just want to connect, feel free to reach out.
           </p>
+          {/* <a
+            href="mailto:gangera0707@gmail.com"
+            className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300"
+          >
+            <Mail className="h-5 w-5 mr-2" />
+            Get in Touch
+          </a> */}
         </div>
+
+
       </div>
     </section>
   );
