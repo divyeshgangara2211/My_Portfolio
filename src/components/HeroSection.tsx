@@ -50,7 +50,7 @@ const HeroSection = () => {
                 onClick={() => {
                   // Resume PDF functionality 
                   // const resumeUrl = "https://drive.google.com/drive/folders/1BRKLC9WhGWm-3Yej3X8JGWJNcX0b5jyD"; 
-                  const resumeUrl = "/All_Certificate_Photos/Resume_Divyesh_Gangera.pdf" ; 
+                  const resumeUrl = "/All_Certificate_Photos/Software Developer.pdf" ; 
                   window.open(resumeUrl, "_blank");
                 }}
               >
