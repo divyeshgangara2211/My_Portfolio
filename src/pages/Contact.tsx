@@ -9,6 +9,8 @@ import { Github, Linkedin, Mail, Phone, MapPin, Instagram } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -29,59 +31,68 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
+      toast({
+        title: "Validation Error",
+        description: "Please fill in all fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast({
+        title: "Validation Error",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      // Send email to gangera0707@gmail.com
-      const emailData = {
-        to: 'gangera0707@gmail.com',
-        subject: `Portfolio Contact: ${formData.subject}`,
-        message: `
-          Name: ${formData.name}
-          Email: ${formData.email}
-          Subject: ${formData.subject}
-          
-          Message:
-          ${formData.message}
-        `
-      };
-      
-      // Send email using EmailJS or similar service
-      try {
-        const response = await fetch('https://formsubmit.co/gangera0707@gmail.com', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            subject: emailData.subject,
-            message: emailData.message,
-            email: formData.email,
-            name: formData.name
-          })
+      const response = await fetch(`${API_URL}/api/send-message`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent Successfully! 📧",
+          description: "Thank you for reaching out! I'll get back to you soon.",
         });
-      } catch (emailError) {
-        console.log('Email service not configured, message logged:', emailData);
+        
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: data.message || "Failed to send message. Please try again.",
+          variant: "destructive",
+        });
       }
-      
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: "Message Sent Successfully! 📧",
-        description: "Thank you for reaching out! I'll get back to you soon.",
-      });
-      
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
     } catch (error) {
+      console.error('Error sending message:', error);
       toast({
         title: "Error",
-        description: "Something went wrong. Please try again.",
+        description: "Failed to send message. Please check your connection and try again.",
         variant: "destructive",
       });
     } finally {
@@ -212,7 +223,7 @@ const Contact = () => {
                     <h3 className="text-2xl font-bold text-gray-800">Location</h3>
                   </div>
                   <p className="text-gray-700 text-lg mb-2">Gujarat, India</p>
-                  <p className="text-purple-600">Open to remote opportunities</p>
+                  <p className="text-purple-600">Open to New Opportunities</p>
                 </div>
               </div>
             </div>
