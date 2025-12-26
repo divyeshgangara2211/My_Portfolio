@@ -1,7 +1,7 @@
 
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
-import ContactSection from "@/components/ContactSection";
+import FeedbackSection from "@/components/FeedbackSection";
 import Footer from "@/components/Footer";
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
       <Navigation />
       <main>
         <HeroSection />
-        <ContactSection />
+        <FeedbackSection />
       </main>
       <Footer />
     </div>
