@@ -90,6 +90,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const isProduction = process.env.NODE_ENV === "production";
+const fromEmail = isProduction ? "onboarding@resend.dev" : process.env.EMAIL_USER;
 
 async function sendEmail({ to, subject, html, text }) {
   if (!to || !subject) {
@@ -99,7 +100,7 @@ async function sendEmail({ to, subject, html, text }) {
   // ✅ Local: use Gmail via Nodemailer
   if (!isProduction) {
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+      from: fromEmail,
       to,
       subject,
       html,
@@ -116,7 +117,7 @@ async function sendEmail({ to, subject, html, text }) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: process.env.EMAIL_USER,
+      from: fromEmail,
       to,
       subject,
       html,
