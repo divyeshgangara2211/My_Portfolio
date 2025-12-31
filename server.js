@@ -1,10 +1,10 @@
-import express from 'express';
-import cors from 'cors';
-import nodemailer from 'nodemailer';
-import rateLimit from 'express-rate-limit';
-import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import express from "express";
+import cors from "cors";
+import nodemailer from "nodemailer";
+import rateLimit from "express-rate-limit";
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
@@ -13,95 +13,119 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 // Parse allowed client URLs from env and use a dynamic origin check
-const rawClientUrls = process.env.CLIENT_URL || 'http://localhost:5173,http://localhost:3000,http://localhost:8080';
-const allowedOrigins = rawClientUrls.split(',').map(s => s.trim()).filter(Boolean);
+const rawClientUrls =
+  process.env.CLIENT_URL ||
+  "http://localhost:5173,http://localhost:3000,http://localhost:8080";
+const allowedOrigins = rawClientUrls
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
 
-app.use(cors({
-  origin: (origin, callback) => {
-    // allow requests with no origin (curl, server-to-server, non-browser)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) return callback(null, true);
-    return callback(null, false);
-  },
-  credentials: true,
-}));
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ limit: '10mb', extended: true }));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // allow requests with no origin (curl, server-to-server, non-browser)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      return callback(null, false);
+    },
+    credentials: true,
+  })
+);
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
 // Rate limiting to prevent spam
 const contactLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 5, // Limit each IP to 5 requests per windowMs
-  message: 'Too many contact requests from this IP, please try again later.',
+  message: "Too many contact requests from this IP, please try again later.",
   standardHeaders: true,
   legacyHeaders: false,
   skip: (req) => {
     // Skip rate limiting in development
-    return process.env.NODE_ENV === 'development';
-  }
+    return process.env.NODE_ENV === "development";
+  },
 });
 
 // Configure email transporter
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',      
+  port: 587,                  
+  secure: false,   
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASSWORD, // App-specific password for Gmail
   },
+  pool: {
+    maxConnections: 1,
+    maxMessages: Infinity,
+    rateDelta: 20000,
+    rateLimit: 5,
+  },
+  connectionTimeout: 10000,
+  socketTimeout: 10000,
   tls: {
-    rejectUnauthorized: false
-  }
+    rejectUnauthorized: false,
+     minVersion: 'TLSv1.2' 
+  },
 });
 
 // Verify transporter connection
 transporter.verify((error, success) => {
   if (error) {
-    console.error('Email transporter error:', error);
+    console.error('❌ Email transporter error:', error.message);
+    console.error('This usually means:');
+    console.error('1. EMAIL_USER is not set...');
   } else {
-    console.log('Email service is ready to send messages');
+    console.log("Email service is ready to send messages");
   }
 });
 
 // Health check endpoint
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'OK', message: 'Server is running' });
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "OK", message: "Server is running" });
 });
 
 // Contact/Feedback endpoint
-app.post('/api/send-feedback', contactLimiter, async (req, res) => {
+app.post("/api/send-feedback", contactLimiter, async (req, res) => {
   try {
     const { message, rating, visitorEmail, visitorName } = req.body;
 
     // Validation
     if (!message || !rating) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Missing required fields: message and rating' 
+      return res.status(400).json({
+        success: false,
+        message: "Missing required fields: message and rating",
       });
     }
 
     if (message.length > 5000) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Message is too long (max 5000 characters)' 
+      return res.status(400).json({
+        success: false,
+        message: "Message is too long (max 5000 characters)",
       });
     }
 
     if (rating < 1 || rating > 5) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Rating must be between 1 and 5' 
+      return res.status(400).json({
+        success: false,
+        message: "Rating must be between 1 and 5",
       });
     }
 
     // Sanitize inputs (basic XSS prevention)
     const sanitizeInput = (str) => {
-      return str.replace(/[<>]/g, '').trim();
+      return str.replace(/[<>]/g, "").trim();
     };
 
     const sanitizedMessage = sanitizeInput(message);
-    const sanitizedName = visitorName ? sanitizeInput(visitorName) : 'Anonymous Visitor';
-    const sanitizedEmail = visitorEmail ? sanitizeInput(visitorEmail) : 'Not provided';
+    const sanitizedName = visitorName
+      ? sanitizeInput(visitorName)
+      : "Anonymous Visitor";
+    const sanitizedEmail = visitorEmail
+      ? sanitizeInput(visitorEmail)
+      : "Not provided";
 
     // Email content
     const mailOptions = {
@@ -115,14 +139,19 @@ app.post('/api/send-feedback', contactLimiter, async (req, res) => {
             <h2 style="color: #333; margin-bottom: 20px;">🎉 New Portfolio Feedback!</h2>
             
             <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-              <p style="margin: 10px 0;"><strong>Rating:</strong> ${'⭐'.repeat(rating)} (${rating}/5)</p>
+              <p style="margin: 10px 0;"><strong>Rating:</strong> ${"⭐".repeat(
+                rating
+              )} (${rating}/5)</p>
               <p style="margin: 10px 0;"><strong>Visitor Name:</strong> ${sanitizedName}</p>
               <p style="margin: 10px 0;"><strong>Visitor Email:</strong> <a href="mailto:${sanitizedEmail}">${sanitizedEmail}</a></p>
               <p style="margin: 10px 0;"><strong>Submitted:</strong> ${new Date().toLocaleString()}</p>
             </div>
 
             <div style="background: #f0f4ff; padding: 15px; border-left: 4px solid #667eea; border-radius: 4px; margin-bottom: 20px;">
-              <p style="margin: 0; color: #333; line-height: 1.6;"><strong>Message:</strong><br>${sanitizedMessage.replace(/\n/g, '<br>')}</p>
+              <p style="margin: 0; color: #333; line-height: 1.6;"><strong>Message:</strong><br>${sanitizedMessage.replace(
+                /\n/g,
+                "<br>"
+              )}</p>
             </div>
 
             <div style="text-align: center; border-top: 1px solid #eee; padding-top: 15px; margin-top: 20px;">
@@ -138,61 +167,63 @@ app.post('/api/send-feedback', contactLimiter, async (req, res) => {
         
         Message:
         ${sanitizedMessage}
-      `
+      `,
     };
 
     // Send email
     await transporter.sendMail(mailOptions);
 
     // Log successful submission
-    console.log(`Feedback received: ${sanitizedName} (${rating}⭐) at ${new Date().toISOString()}`);
+    console.log(
+      `Feedback received: ${sanitizedName} (${rating}⭐) at ${new Date().toISOString()}`
+    );
 
-    res.status(200).json({ 
-      success: true, 
-      message: 'Feedback submitted successfully! You will receive a confirmation email.' 
+    res.status(200).json({
+      success: true,
+      message:
+        "Feedback submitted successfully! You will receive a confirmation email.",
     });
-
   } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).json({ 
-      success: false, 
-      message: 'Failed to submit feedback. Please try again later.' 
+    console.error("Error sending email:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to submit feedback. Please try again later.",
     });
   }
 });
 
 // Contact form endpoint (for direct inquiries)
-app.post('/api/send-message', contactLimiter, async (req, res) => {
+app.post("/api/send-message", contactLimiter, async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
 
     // Validation
     if (!name || !email || !subject || !message) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Missing required fields' 
+      return res.status(400).json({
+        success: false,
+        message: "Missing required fields",
       });
     }
 
     // Email validation regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Invalid email address' 
+      return res.status(400).json({
+        success: false,
+        message: "Invalid email address",
       });
     }
 
     if (message.length > 5000) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Message is too long (max 5000 characters)' 
+      return res.status(400).json({
+        success: false,
+        message: "Message is too long (max 5000 characters)",
       });
     }
 
     // Sanitize inputs
     const sanitizeInput = (str) => {
-      return str.replace(/[<>]/g, '').trim();
+      return str.replace(/[<>]/g, "").trim();
     };
 
     const sanitizedName = sanitizeInput(name);
@@ -219,7 +250,10 @@ app.post('/api/send-message', contactLimiter, async (req, res) => {
             </div>
 
             <div style="background: #f0f4ff; padding: 15px; border-left: 4px solid #667eea; border-radius: 4px; margin-bottom: 20px;">
-              <p style="margin: 0; color: #333; line-height: 1.6;"><strong>Message:</strong><br>${sanitizedMessage.replace(/\n/g, '<br>')}</p>
+              <p style="margin: 0; color: #333; line-height: 1.6;"><strong>Message:</strong><br>${sanitizedMessage.replace(
+                /\n/g,
+                "<br>"
+              )}</p>
             </div>
 
             <div style="text-align: center; border-top: 1px solid #eee; padding-top: 15px; margin-top: 20px;">
@@ -235,25 +269,26 @@ app.post('/api/send-message', contactLimiter, async (req, res) => {
         
         Message:
         ${sanitizedMessage}
-      `
+      `,
     };
 
     // Send email
     await transporter.sendMail(mailOptions);
 
     // Log successful submission
-    console.log(`Message received from: ${sanitizedName} (${sanitizedEmail}) at ${new Date().toISOString()}`);
+    console.log(
+      `Message received from: ${sanitizedName} (${sanitizedEmail}) at ${new Date().toISOString()}`
+    );
 
-    res.status(200).json({ 
-      success: true, 
-      message: 'Message sent successfully! I\'ll get back to you soon.' 
+    res.status(200).json({
+      success: true,
+      message: "Message sent successfully! I'll get back to you soon.",
     });
-
   } catch (error) {
-    console.error('Error sending message:', error);
-    res.status(500).json({ 
-      success: false, 
-      message: 'Failed to send message. Please try again later.' 
+    console.error("Error sending message:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to send message. Please try again later.",
     });
   }
 });
@@ -261,9 +296,9 @@ app.post('/api/send-message', contactLimiter, async (req, res) => {
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ 
-    success: false, 
-    message: 'An unexpected error occurred' 
+  res.status(500).json({
+    success: false,
+    message: "An unexpected error occurred",
   });
 });
 
@@ -287,13 +322,13 @@ app.use((err, req, res, next) => {
 
 // 404 for non-GET or unmatched API requests
 app.use((req, res) => {
-  res.status(404).json({ 
-    success: false, 
-    message: 'Endpoint not found' 
+  res.status(404).json({
+    success: false,
+    message: "Endpoint not found",
   });
 });
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`Environment: ${process.env.NODE_ENV || "development"}`);
 });
