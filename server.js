@@ -184,7 +184,13 @@ app.post("/api/send-feedback", contactLimiter, async (req, res) => {
         "Feedback submitted successfully! You will receive a confirmation email.",
     });
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error("❌ Error sending email:", {
+      message: error.message,
+      code: error.code,
+      command: error.command,
+      response: error.response,
+
+    });
     res.status(500).json({
       success: false,
       message: "Failed to submit feedback. Please try again later.",
@@ -285,7 +291,12 @@ app.post("/api/send-message", contactLimiter, async (req, res) => {
       message: "Message sent successfully! I'll get back to you soon.",
     });
   } catch (error) {
-    console.error("Error sending message:", error);
+    console.error("❌ Error sending message:", {
+      message: error.message,
+      code: error.code,
+      command: error.command,
+      response: error.response,
+    });
     res.status(500).json({
       success: false,
       message: "Failed to send message. Please try again later.",
