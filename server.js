@@ -77,15 +77,17 @@ const transporter = nodemailer.createTransport({
 });
 
 // Verify transporter connection
-transporter.verify((error, success) => {
-  if (error) {
-    console.error("❌ Email transporter error:", error.message);
-    console.error("This usually means:");
-    console.error("1. EMAIL_USER is not set...");
-  } else {
-    console.log("Email service is ready to send messages");
-  }
-});
+if (process.env.NODE_ENV !== "production") {
+  transporter.verify((error, success) => {
+    if (error) {
+      console.error("❌ Email transporter error:", error.message);
+      console.error("This usually means:");
+      console.error("1. EMAIL_USER is not set...");
+    } else {
+      console.log("Email service is ready to send messages");
+    }
+  });
+}
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -375,7 +377,6 @@ app.use((err, req, res, next) => {
     message: "An unexpected error occurred",
   });
 });
-
 
 // 404 for non-GET or unmatched API requests
 app.use((req, res) => {
