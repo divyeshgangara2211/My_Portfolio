@@ -269,21 +269,21 @@ app.use((err, req, res, next) => {
 
 // 404 handler
 // Serve built frontend (if present) and fall back to index.html for SPA routes
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const distPath = path.join(__dirname, 'dist');
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+// const distPath = path.join(__dirname, 'dist');
 
-// Serve static assets from /dist
-app.use(express.static(distPath));
+// // Serve static assets from /dist
+// app.use(express.static(distPath));
 
-// SPA fallback: for any GET request not to API or health, send index.html
-app.get('*', (req, res, next) => {
-  if (req.method !== 'GET') return next();
-  if (req.path.startsWith('/api') || req.path === '/health') return next();
-  res.sendFile(path.join(distPath, 'index.html'), (err) => {
-    if (err) next(err);
-  });
-});
+// // SPA fallback: for any GET request not to API or health, send index.html
+// app.get('*', (req, res, next) => {
+//   if (req.method !== 'GET') return next();
+//   if (req.path.startsWith('/api') || req.path === '/health') return next();
+//   res.sendFile(path.join(distPath, 'index.html'), (err) => {
+//     if (err) next(err);
+//   });
+// });
 
 // 404 for non-GET or unmatched API requests
 app.use((req, res) => {
