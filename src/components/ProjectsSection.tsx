@@ -245,7 +245,7 @@ const ProjectsSection = () => {
         "Progressively Increasing Difficulty",
         "Visual Feedback for Correct/Incorrect Moves"
       ],
-      githubLink: "https://github.com/divyeshgangara2211/JavaScript-Projects",
+      githubLink: "https://github.com/divyeshgangara2211/JavaScript_Projects/tree/main/Projects/7-SimonGame",
       // liveLink: "your-live-demo-link-here"
     },
   ];

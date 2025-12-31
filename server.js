@@ -21,6 +21,7 @@ const PORT = process.env.PORT || 5000;
 const rawClientUrls =
   process.env.CLIENT_URL ||
   "http://localhost:5173,http://localhost:3000,http://localhost:8080";
+  
 const allowedOrigins = rawClientUrls
   .split(",")
   .map((s) => s.trim())
