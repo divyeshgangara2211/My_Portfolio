@@ -368,7 +368,7 @@ Origin: http://localhost:5173
 
 ## 🧪 Postman Testing
 
-- 🧪 **Postman Collection**: [Postman Collection] (https://divyeshgangera.postman.co/workspace/Divyesh-Gangera's-Workspace~753ced6c-f8a3-4456-83d0-5aff0dc7059d/collection/46277832-4dd8112f-d573-4a95-8be2-c4f261aa0abf?action=share&creator=46277832&active-environment=46277832-220a9adc-b599-48d7-8c4f-0f9b624ac431&live=7w8hhzsrxy)
+- 🧪 **Postman Collection**: [Postman Collection](https://divyeshgangera.postman.co/workspace/Divyesh-Gangera's-Workspace~753ced6c-f8a3-4456-83d0-5aff0dc7059d/collection/46277832-4dd8112f-d573-4a95-8be2-c4f261aa0abf?action=share&creator=46277832&active-environment=46277832-220a9adc-b599-48d7-8c4f-0f9b624ac431&live=7w8hhzsrxy)
 
 ### Import Postman Collection
 
