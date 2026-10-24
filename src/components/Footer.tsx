@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
   Github,
   Linkedin,
@@ -103,7 +103,7 @@ const Footer = () => {
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
-                    to={link.href}
+                    href={link.href}
                     className="text-gray-400 hover:text-white transition-colors duration-200"
                   >
                     {link.name}
@@ -156,7 +156,7 @@ const Footer = () => {
 
             {/* Designed & Built with <Heart className="h-4 w-4 text-red-500 mx-1.5" fill="currentColor" /> */}
           </p>
-          <p className="text-gray-500 text-sm mt-2">
+          <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">
             © {new Date().getFullYear()} Divyesh Gangera. All Rights Reserved.
           </p>
         </div>

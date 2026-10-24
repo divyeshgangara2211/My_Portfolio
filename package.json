@@ -4,13 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "next dev",
     "dev:server": "node server.js",
     "dev:all": "concurrently \"npm run dev:server\" \"npm run dev\"",
-    "build": "vite build",
-    "build:dev": "vite build --mode development",
+    "build": "next build",
+    "build:dev": "next build",
     "lint": "eslint .",
-    "preview": "vite preview",
+    "preview": "next start",
     "start": "node server.js"
   },
   "dependencies": {
@@ -52,8 +52,10 @@
     "embla-carousel-react": "^8.3.0",
     "express": "^4.21.2",
     "express-rate-limit": "^7.5.0",
+    "framer-motion": "^14.1.0",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.462.0",
+    "next": "^16.4.3",
     "next-themes": "^0.3.0",
     "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.16",
@@ -62,7 +64,6 @@
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",
     "react-resizable-panels": "^2.1.3",
-    "react-router-dom": "^6.26.2",
     "recharts": "^2.12.7",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.2",
@@ -81,7 +82,6 @@
     "@types/nodemailer": "^6.4.15",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react-swc": "^3.5.0",
     "autoprefixer": "^10.4.20",
     "concurrently": "^9.1.0",
     "eslint": "^9.9.0",
@@ -91,7 +91,6 @@
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.11",
     "typescript": "^5.5.3",
-    "typescript-eslint": "^8.0.1",
-    "vite": "^5.4.1"
+    "typescript-eslint": "^8.0.1"
   }
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,7 +8,12 @@ import { Input } from "@/components/ui/input";
 import { Github, Linkedin, Star, Instagram, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  process.env.VITE_API_URL ||
+  (typeof window !== "undefined" && window.location.hostname !== "localhost"
+    ? "https://my-portfolio-backend-cl9q.onrender.com"
+    : "http://localhost:5000");
 
 const ContactSection = () => {
   const [activeTab, setActiveTab] = useState<'feedback' | 'message'>('feedback');
@@ -203,26 +210,26 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 to-blue-50">
+    <section id="contact" className="py-10 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
       <div className="max-w-4xl mx-auto">
         {/* Tab Navigation */}
-        <div className="flex justify-center gap-4 mb-16">
+        <div className="flex justify-center gap-2.5 sm:gap-4 mb-10 sm:mb-16">
           <button
             onClick={() => setActiveTab('feedback')}
-            className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
+            className={`px-4 sm:px-6 py-2.5 text-sm sm:text-base rounded-full font-semibold transition-all duration-300 ${
               activeTab === 'feedback'
                 ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-blue-500'
+                : 'bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-slate-700 hover:border-blue-500'
             }`}
           >
             ⭐ Feedback
           </button>
           <button
             onClick={() => setActiveTab('message')}
-            className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
+            className={`px-4 sm:px-6 py-2.5 text-sm sm:text-base rounded-full font-semibold transition-all duration-300 ${
               activeTab === 'message'
                 ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-blue-500'
+                : 'bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-slate-700 hover:border-blue-500'
             }`}
           >
             💬 Get in Touch
@@ -232,13 +239,13 @@ const ContactSection = () => {
         {/* Feedback Tab */}
         {activeTab === 'feedback' && (
           <>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Drop Your Feedback</h2>
-              <div className="flex justify-center mb-6 space-x-2">
+            <div className="text-center mb-10 sm:mb-16">
+              <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">Drop Your Feedback</h2>
+              <div className="flex justify-center mb-4 sm:mb-6 space-x-1.5 sm:space-x-2">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <Star 
                     key={star} 
-                    className={`w-10 h-10 cursor-pointer transition-all duration-300 hover:scale-110 transform ${getStarColor(star)}`}
+                    className={`w-8 h-8 sm:w-10 sm:h-10 cursor-pointer transition-all duration-300 hover:scale-110 transform ${getStarColor(star)}`}
                     onClick={() => handleStarClick(star)}
                     onMouseEnter={() => handleStarHover(star)}
                     onMouseLeave={handleStarLeave}
@@ -251,48 +258,50 @@ const ContactSection = () => {
                 ))}
               </div>
               {feedbackData.rating > 0 && (
-                <p className="text-lg text-gray-600 animate-fade-in">
+                <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 animate-fade-in">
                   Thank you for rating {feedbackData.rating} star{feedbackData.rating > 1 ? 's' : ''}! ✨
                 </p>
               )}
             </div>
 
-            <Card className="border-0 shadow-xl bg-white rounded-3xl overflow-hidden mb-16">
-              <CardContent className="p-8">
+            <div className="relative group mb-16">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-300 to-pink-300 dark:from-purple-600 dark:to-pink-600 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur"></div>
+              <Card className="relative border-0 shadow-xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg rounded-2xl sm:rounded-3xl overflow-hidden">
+                <CardContent className="p-5 sm:p-8">
                 <form onSubmit={handleFeedbackSubmit} className="space-y-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Name (Optional)</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
                     <Input
                       type="text"
                       name="visitorName"
                       value={feedbackData.visitorName}
                       onChange={(e) => setFeedbackData(prev => ({ ...prev, visitorName: e.target.value }))}
-                      className="w-full border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 rounded-xl"
+                      className="w-full border-2 border-gray-200 dark:border-slate-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800 rounded-xl bg-white dark:bg-slate-900 dark:text-white"
                       placeholder="Your name"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Email (Optional)</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
                     <Input
                       type="email"
                       name="visitorEmail"
                       value={feedbackData.visitorEmail}
                       onChange={(e) => setFeedbackData(prev => ({ ...prev, visitorEmail: e.target.value }))}
-                      className="w-full border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 rounded-xl"
+                      className="w-full border-2 border-gray-200 dark:border-slate-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800 rounded-xl bg-white dark:bg-slate-900 dark:text-white"
                       placeholder="your.email@example.com"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Your Feedback</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Your Feedback</label>
                     <Textarea
                       name="message"
                       required
                       rows={6}
                       value={feedbackData.message}
                       onChange={handleFeedbackInputChange}
-                      className="w-full border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 resize-none rounded-xl text-lg"
+                      className="w-full border-2 border-gray-200 dark:border-slate-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800 resize-none rounded-xl text-lg bg-white dark:bg-slate-900 dark:text-white"
                       placeholder="Share your thoughts about my work..."
                     />
                   </div>
@@ -312,8 +321,9 @@ const ContactSection = () => {
                     )}
                   </Button>
                 </form>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           </>
         )}
 
@@ -321,61 +331,63 @@ const ContactSection = () => {
         {activeTab === 'message' && (
           <>
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
-              <p className="text-lg text-gray-600">Have a project in mind? Let's talk!</p>
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Get in Touch</h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400">Have a project in mind? Let's talk!</p>
             </div>
 
-            <Card className="border-0 shadow-xl bg-white rounded-3xl overflow-hidden mb-16">
-              <CardContent className="p-8">
+            <div className="relative group mb-16">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-teal-300 to-emerald-300 dark:from-teal-600 dark:to-emerald-600 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur"></div>
+              <Card className="relative border-0 shadow-xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg rounded-2xl sm:rounded-3xl overflow-hidden">
+                <CardContent className="p-5 sm:p-8">
                 <form onSubmit={handleMessageSubmit} className="space-y-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Name *</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name *</label>
                     <Input
                       type="text"
                       name="name"
                       required
                       value={messageData.name}
                       onChange={handleMessageInputChange}
-                      className="w-full border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 rounded-xl"
+                      className="w-full border-2 border-gray-200 dark:border-slate-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800 rounded-xl bg-white dark:bg-slate-900 dark:text-white"
                       placeholder="Your full name"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email *</label>
                     <Input
                       type="email"
                       name="email"
                       required
                       value={messageData.email}
                       onChange={handleMessageInputChange}
-                      className="w-full border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 rounded-xl"
+                      className="w-full border-2 border-gray-200 dark:border-slate-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800 rounded-xl bg-white dark:bg-slate-900 dark:text-white"
                       placeholder="your.email@example.com"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Subject *</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject *</label>
                     <Input
                       type="text"
                       name="subject"
                       required
                       value={messageData.subject}
                       onChange={handleMessageInputChange}
-                      className="w-full border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 rounded-xl"
+                      className="w-full border-2 border-gray-200 dark:border-slate-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800 rounded-xl bg-white dark:bg-slate-900 dark:text-white"
                       placeholder="What is this about?"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message *</label>
                     <Textarea
                       name="message"
                       required
                       rows={6}
                       value={messageData.message}
                       onChange={handleMessageInputChange}
-                      className="w-full border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 resize-none rounded-xl text-lg"
+                      className="w-full border-2 border-gray-200 dark:border-slate-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800 resize-none rounded-xl text-lg bg-white dark:bg-slate-900 dark:text-white"
                       placeholder="Tell me about your project..."
                     />
                   </div>
@@ -395,14 +407,15 @@ const ContactSection = () => {
                     )}
                   </Button>
                 </form>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           </>
         )}
 
         {/* Social Links */}
-        <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-3xl p-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-800 mb-8">Let's Build Together</h3>
+        <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 rounded-3xl p-8 text-center">
+          <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-8">Let's Build Together</h3>
           <div className="flex justify-center space-x-6 mb-6">
             <a
               href="https://www.linkedin.com/in/divyesh-gangera-916468274/"
@@ -429,7 +442,7 @@ const ContactSection = () => {
               <Instagram className="h-8 w-8" />
             </a>
           </div>
-          {/* <p className="text-gray-600 text-lg font-medium">
+          {/* <p className="text-gray-600 dark:text-gray-400 text-lg font-medium">
             Made with ❤️ by Divyesh Gangera
           </p> */}
           <p className="text-black-900 mb-8 max-w-2xl mx-auto">

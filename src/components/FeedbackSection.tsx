@@ -1,14 +1,22 @@
+"use client";
+
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
 import { Star, Send, Sparkles } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  process.env.VITE_API_URL ||
+  "https://my-portfolio-backend-cl9q.onrender.com";
 
 const FeedbackSection = () => {
   const [message, setMessage] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [rating, setRating] = useState(0);
   const [hovered, setHovered] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -32,7 +40,7 @@ const FeedbackSection = () => {
       const res = await fetch(`${API_URL}/api/send-feedback`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message, rating }),
+        body: JSON.stringify({ message, rating, visitorName: name || "Anonymous", visitorEmail: email || "Not provided" }),
       });
 
       const data = await res.json();
@@ -43,6 +51,8 @@ const FeedbackSection = () => {
           description: `Thanks for your ${rating}-star feedback!`,
         });
         setMessage("");
+        setName("");
+        setEmail("");
         setRating(0);
       } else {
         toast({
@@ -67,13 +77,13 @@ const FeedbackSection = () => {
     const active = hovered || rating;
     return star <= active
       ? "text-yellow-400 fill-yellow-400 drop-shadow-md"
-      : "text-gray-300";
+      : "text-gray-300 dark:text-slate-600";
   };
 
   return (
     <section
       id="feedback"
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100"
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"
     >
       <div className="max-w-4xl mx-auto">
         {/* Header */}
@@ -82,10 +92,10 @@ const FeedbackSection = () => {
             <Sparkles className="w-5 h-5" />
             <span className="text-sm font-semibold uppercase tracking-widest">Your Feedback</span>
           </div> */}
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-3">
             Drop Your Feedback
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Your thoughts help me improve. Let me know what you think !!
           </p>
         </div>
@@ -93,9 +103,9 @@ const FeedbackSection = () => {
         {/* Main Card */}
         <div className="relative group">
           {/* Subtle gradient border */}
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-200 to-purple-200 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur"></div>
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-200 to-purple-200 dark:from-blue-600 dark:to-purple-600 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur"></div>
 
-          <Card className="relative border border-white/60 bg-white/80 backdrop-blur-lg rounded-3xl shadow-lg overflow-hidden">
+          <Card className="relative border border-white/60 dark:border-white/10 bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg rounded-3xl shadow-lg overflow-hidden">
             <CardContent className="p-8 md:p-10">
               <form onSubmit={handleSubmit} className="space-y-7">
                 {/* Star Rating */}
@@ -129,7 +139,7 @@ const FeedbackSection = () => {
                   </div>
                   {rating > 0 && (
                     <div className="text-center">
-                      <p className="text-gray-700 text-base md:text-lg font-semibold animate-fade-in">
+                      <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg font-semibold animate-fade-in">
                         {rating === 5 && "⭐ Excellent! You loved it!"}
                         {rating === 4 && "🌟 Great! Very satisfied"}
                         {rating === 3 && "👍 Good! Thanks for feedback"}
@@ -141,28 +151,48 @@ const FeedbackSection = () => {
                 </div>
 
                 {/* Textarea */}
-                <div>
-                  <label className="sr-only">Your feedback</label>
-                  <Textarea
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    rows={6}
-                    placeholder="Write your thoughts here..."
-                    className="w-full resize-none rounded-xl border border-blue-100 bg-white text-gray-900 placeholder-gray-400 px-5 py-4 text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all duration-300 focus:outline-none"
-                  />
-                </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
+                    <Input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full border border-blue-100 dark:border-slate-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900 rounded-xl bg-white dark:bg-slate-800 text-gray-900 dark:text-white mb-4"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                    <Input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full border border-blue-100 dark:border-slate-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900 rounded-xl bg-white dark:bg-slate-800 text-gray-900 dark:text-white mb-4"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Your Feedback</label>
+                    <Textarea
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      rows={6}
+                      placeholder="Write your thoughts here..."
+                      className="w-full resize-none rounded-xl border border-blue-100 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 px-5 py-4 text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900 transition-all duration-300 focus:outline-none"
+                    />
+                  </div>
 
                 {/* Footer */}
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-5 pt-2">
                   <div className="text-center sm:text-left">
                     {rating > 0 && (
-                      <p className="text-gray-700 font-semibold animate-fade-in">
+                      <p className="text-gray-700 dark:text-gray-300 font-semibold animate-fade-in">
                         Rating:{" "}
-                        <span className="text-blue-600">{rating} / 5</span>
+                        <span className="text-blue-600 dark:text-blue-400">{rating} / 5</span>
                       </p>
                     )}
                     {rating === 0 && (
-                      <p className="text-gray-500 text-sm">
+                      <p className="text-gray-500 dark:text-gray-400 text-sm">
                         Select a rating above
                       </p>
                     )}

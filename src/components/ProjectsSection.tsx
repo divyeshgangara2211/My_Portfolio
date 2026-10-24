@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Trophy,FileText,Video , Heart } from "lucide-react";
@@ -283,6 +285,35 @@ const ProjectsSection = () => {
     }
   ];
 
+  const machineLearningProjects = [
+    {
+      title: "Placement Prediction System",
+      description: "Developed an ML application predicting student placement outcomes on 10,000+ records using Logistic Regression and Decision Trees, reaching 78% accuracy. Built an interactive Tkinter GUI for real-time predictions with input validation and integrated model inference.",
+      tech: ["Python", "Pandas", "Scikit-learn", "Tkinter", "Logistic Regression"],
+      icon: "🤖",
+      features: [
+        "Placement prediction using Logistic Regression & Decision Trees",
+        "Trained on 10,000+ student records with 78% accuracy",
+        "Interactive Tkinter GUI for real-time user input",
+        "Built-in input validation and model inference"
+      ],
+      githubLink: "https://github.com/divyeshgangara2211/AI-And-ML-Training-Projects/blob/main/placementPredication(2).ipynb",
+    },
+    {
+      title: "Bengaluru House Price Prediction",
+      description: "Built an end-to-end ML pipeline predicting property prices on 13,000+ real estate records using Linear Regression. Cleaned and preprocessed raw data to improve model reliability. Ran exploratory data analysis and visualizations to surface location-wise pricing trends.",
+      tech: ["Python", "Pandas", "NumPy", "Scikit-learn", "Linear Regression", "EDA"],
+      icon: "🏠",
+      features: [
+        "End-to-end ML pipeline for property price prediction",
+        "Trained on 13,000+ real estate records",
+        "Data cleaning and preprocessing",
+        "Exploratory Data Analysis (EDA) and visualizations"
+      ],
+      githubLink: "https://github.com/divyeshgangara2211/AI-And-ML-Training-Projects/blob/main/bengluru_price_distrinution%20(1).ipynb",
+    }
+  ];
+
   const cloneProjects = [
       { 
         title: "Amazon Clone", 
@@ -319,10 +350,10 @@ const ProjectsSection = () => {
 
   const ProjectCard = ({ project, index, isSpecial = false }: { project: any; index: number; isSpecial?: boolean }) => (
     <Card 
-      className={`group hover:shadow-xl transition-all duration-300 border-0 bg-white hover:-translate-y-2 ${isSpecial ? 'border-2 border-yellow-300 bg-gradient-to-br from-yellow-50 to-orange-50' : ''}`}
+      className={`group hover:shadow-xl dark:hover:shadow-blue-900/20 transition-all duration-300 bg-white dark:bg-slate-900/60 hover:-translate-y-2 border ${isSpecial ? 'border-2 border-yellow-300 dark:border-yellow-600/50 bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-slate-900 dark:to-yellow-900/20' : 'border-gray-100 dark:border-slate-800 backdrop-blur-sm'}`}
       style={{ animationDelay: `${index * 200}ms` }}
     >
-      <CardContent className="p-6">
+      <CardContent className="p-5 sm:p-6">
         {isSpecial && (
           <div className="flex items-center mb-4">
             <Trophy className="h-6 w-6 text-yellow-600 mr-2" />
@@ -333,19 +364,19 @@ const ProjectsSection = () => {
         )}
         
         <div className="text-4xl mb-4 text-center">{project.logo || project.icon}</div>
-        <h4 className="text-xl font-semibold text-gray-900 mb-3 text-center">{project.title}</h4>
-        <p className="text-gray-600 mb-4 text-sm leading-relaxed">{project.description}</p>
+        <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 text-center">{project.title}</h4>
+        <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">{project.description}</p>
         
         {project.journey && (
-          <div className="bg-blue-50 p-4 rounded-lg mb-4 border-l-4 border-blue-500">
-            <p className="text-blue-800 text-sm italic">{project.journey}</p>
+          <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-4 border-l-4 border-blue-500 dark:border-blue-400">
+            <p className="text-blue-800 dark:text-blue-200 text-sm italic">{project.journey}</p>
           </div>
         )}
 
         {project.features && (
           <div className="mb-4">
-            <h5 className="text-sm font-semibold text-gray-700 mb-2">Key Features:</h5>
-            <ul className="text-xs text-gray-600 space-y-1">
+            <h5 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Key Features:</h5>
+            <ul className="text-xs text-gray-600 dark:text-gray-400 space-y-1">
               {project.features.map((feature: string) => (
                 <li key={feature} className="flex items-center">
                   <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></span>
@@ -360,19 +391,19 @@ const ProjectsSection = () => {
           {project.tech.map((tech: string) => (
             <span 
               key={tech} 
-              className="bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full font-medium"
+              className="bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs px-3 py-1.5 rounded-full font-medium border border-blue-100 dark:border-blue-800/50"
             >
               {tech}
             </span>
           ))}
         </div>
         
-        <div className="flex flex-wrap gap-2">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2.5">
           {project.githubLink && ( 
             <Button 
               size="sm" 
               variant="outline" 
-              className="flex-1 border-blue-300 text-blue-600 hover:bg-blue-50"
+              className="w-full sm:flex-1 font-medium border-blue-300 dark:border-blue-700/60 bg-blue-50/60 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 hover:!bg-blue-600 hover:!text-white hover:!border-blue-600 dark:hover:!bg-blue-600 dark:hover:!text-white dark:hover:!border-blue-600 transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-blue-500/25 active:scale-95 cursor-pointer"
               onClick={() => {
                 // Placeholder for GitHub/project links 
                 window.open( project.githubLink , '_blank');
@@ -387,7 +418,7 @@ const ProjectsSection = () => {
             <Button 
               size="sm" 
               variant="outline" 
-              className="flex-1 border-green-300 text-green-600 hover:bg-green-50"
+              className="w-full sm:flex-1 font-medium border-emerald-300 dark:border-emerald-700/60 bg-emerald-50/60 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 hover:!bg-emerald-600 hover:!text-white hover:!border-emerald-600 dark:hover:!bg-emerald-600 dark:hover:!text-white dark:hover:!border-emerald-600 transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-emerald-500/25 active:scale-95 cursor-pointer"
               onClick={() => {
                 // Placeholder for view project links 
                 window.open( project.liveLink , '_blank');
@@ -403,7 +434,7 @@ const ProjectsSection = () => {
             <Button 
               size="sm" 
               variant="outline" 
-              className="flex-1 border-gray-300 text-gray-600 hover:bg-gray-50"
+              className="w-full sm:flex-1 font-medium border-purple-300 dark:border-purple-700/60 bg-purple-50/60 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 hover:!bg-purple-600 hover:!text-white hover:!border-purple-600 dark:hover:!bg-purple-600 dark:hover:!text-white dark:hover:!border-purple-600 transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-purple-500/25 active:scale-95 cursor-pointer"
               onClick={() => window.open(project.reportLink, '_blank')}
             >
               <FileText className="h-4 w-4 mr-2" />
@@ -416,7 +447,7 @@ const ProjectsSection = () => {
             <Button 
               size="sm" 
               variant="outline" 
-              className="flex-1 border-red-300 text-red-600 hover:bg-red-50"
+              className="w-full sm:flex-1 font-medium border-rose-300 dark:border-rose-700/60 bg-rose-50/60 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 hover:!bg-rose-600 hover:!text-white hover:!border-rose-600 dark:hover:!bg-rose-600 dark:hover:!text-white dark:hover:!border-rose-600 transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-rose-500/25 active:scale-95 cursor-pointer"
               onClick={() => window.open(project.videoLink, '_blank')}
             >
               <Video className="h-4 w-4 mr-2" />
@@ -427,7 +458,7 @@ const ProjectsSection = () => {
           {project.isWinner && (
             <Button 
               size="sm" 
-              className="flex-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-white"
+              className="w-full sm:flex-1 font-medium bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white shadow-sm hover:shadow-md hover:shadow-orange-500/25 transition-all duration-300 active:scale-95 cursor-pointer"
               onClick={() => {
                 // Correctly navigates to the #ideathon section of your about page
                 window.location.href = '/about#ideathon';
@@ -443,18 +474,28 @@ const ProjectsSection = () => {
   );
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-10 sm:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-gray-900 mb-6">My Projects</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">My Projects</h2>
+          <p className="text-base sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             A showcase of my development journey across different technologies and frameworks
           </p>
         </div>
 
+        {/* Machine Learning & AI Projects */}
+        <div className="mb-20">
+          <h3 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-12 text-center">🧠 Machine Learning & AI Projects</h3>
+          <div className="grid lg:grid-cols-1 gap-8 max-w-3xl mx-auto">
+            {machineLearningProjects.map((project, index) => (
+              <ProjectCard key={project.title} project={project} index={index} />
+            ))}
+          </div>
+        </div>
+
         {/* Full Stack Projects */}
         <div className="mb-20">
-          <h3 className="text-3xl font-semibold text-gray-800 mb-12 text-center">🚀 Full Stack Projects</h3>
+          <h3 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-12 text-center">🚀 Full Stack Projects</h3>
           <div className="grid lg:grid-cols-1 gap-8 max-w-3xl mx-auto">
             {fullStackProjects.map((project, index) => (
               <ProjectCard key={project.title} project={project} index={index} />
@@ -464,7 +505,7 @@ const ProjectsSection = () => {
 
          {/* Backend Projects */}
         <div className="mb-20">
-          <h3 className="text-3xl font-semibold text-gray-800 mb-12 text-center">⚙️ Backend Projects</h3>
+          <h3 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-12 text-center">⚙️ Backend Projects</h3>
           <div className="grid lg:grid-cols-1 gap-8 max-w-3xl mx-auto">
             {backendProjects.map((project, index) => (
               <ProjectCard key={project.title} project={project} index={index} />
@@ -474,7 +515,7 @@ const ProjectsSection = () => {
 
         {/* Frontend Projects */}
         <div className="mb-20">
-          <h3 className="text-3xl font-semibold text-gray-800 mb-12 text-center">💻 Frontend Projects</h3>
+          <h3 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-12 text-center">💻 Frontend Projects</h3>
           <div className="grid lg:grid-cols-1 gap-8 max-w-3xl mx-auto">
             {frontendProjects.map((project, index) => (
               <ProjectCard key={project.title} project={project} index={index} isSpecial={true} />
@@ -484,7 +525,7 @@ const ProjectsSection = () => {
 
         {/* Clone Projects */}
         <div className="mb-20">
-          <h3 className="text-3xl font-semibold text-gray-800 mb-12 text-center">🎭 Clone Projects</h3>
+          <h3 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-12 text-center">🎭 Clone Projects</h3>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {cloneProjects.map((project, index) => (
               <ProjectCard key={project.title} project={project} index={index} />
@@ -494,7 +535,7 @@ const ProjectsSection = () => {
 
         {/* React Mini Projects */}
         <div className="mb-20">
-          <h3 className="text-3xl font-semibold text-gray-800 mb-12 text-center">⚛️ React Mini Projects</h3>
+          <h3 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-12 text-center">⚛️ React Mini Projects</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {reactProjects.map((project, index) => (
               <ProjectCard key={project.title} project={project} index={index} />
@@ -504,7 +545,7 @@ const ProjectsSection = () => {
 
         {/* JavaScript Mini Projects */}
         <div className="mb-20">
-          <h3 className="text-3xl font-semibold text-gray-800 mb-12 text-center">🟨 JavaScript Mini Projects</h3>
+          <h3 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-12 text-center">🟨 JavaScript Mini Projects</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {jsProjects.map((project, index) => (
               <ProjectCard key={project.title} project={project} index={index} />
@@ -514,13 +555,14 @@ const ProjectsSection = () => {
 
         {/* Python Projects */}
         <div>
-          <h3 className="text-3xl font-semibold text-gray-800 mb-12 text-center">🐍 Python Projects</h3>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <h3 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-12 text-center">🐍 Python Projects</h3>
+          <div className="grid lg:grid-cols-1 gap-8 max-w-3xl mx-auto">
             {pythonProjects.map((project, index) => (
               <ProjectCard key={project.title} project={project} index={index} />
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );

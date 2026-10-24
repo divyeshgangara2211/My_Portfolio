@@ -85,13 +85,39 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				blob: {
+					'0%': { transform: 'translate(0px, 0px) scale(1)' },
+					'33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+					'66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+					'100%': { transform: 'translate(0px, 0px) scale(1)' },
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'blob': 'blob 7s infinite'
 			}
 		}
 	},
-	plugins: [animate],
+	plugins: [
+		animate,
+		function({ addUtilities }) {
+			const newUtilities = {
+				'.animation-delay-1000': {
+					'animation-delay': '1s',
+				},
+				'.animation-delay-2000': {
+					'animation-delay': '2s',
+				},
+				'.animation-delay-3000': {
+					'animation-delay': '3s',
+				},
+				'.animation-delay-4000': {
+					'animation-delay': '4s',
+				},
+			};
+			addUtilities(newUtilities);
+		}
+	],
 } satisfies Config;

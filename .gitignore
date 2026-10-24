@@ -10,7 +10,10 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+.next/
+out/
 *.local
+add_dark_mode.cjs
 
 # Environment variables - NEVER COMMIT
 .env
