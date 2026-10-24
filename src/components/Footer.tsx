@@ -36,10 +36,8 @@ const Footer = () => {
             <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
               Divyesh Gangera
             </h3>
-            <p className="text-gray-300 mb-6 max-w-md">
-              Passionate Computer Engineering student building innovative
-              solutions. From React applications to full-stack development, I
-              create digital experiences that matter.
+            <p className="text-gray-300 dark:text-gray-400 mb-6 max-w-md">
+              Software Engineer specializing in Python, scalable backend architectures, automated enterprise workflows, and Applied AI solutions.
             </p>
 
             {/* LinkedIn */}

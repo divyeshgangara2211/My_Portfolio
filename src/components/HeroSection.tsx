@@ -20,18 +20,16 @@ const HeroSection = () => {
                 </span>
               </h1>
               <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed">
-                A passionate{" "}
-                <span className="font-semibold text-blue-600">
-                  Computer Engineering
+                A{" "}
+                <span className="font-semibold text-blue-600 dark:text-blue-400">
+                  Software Engineer
                 </span>{" "}
-                student crafting innovative digital solutions
+                building scalable backend systems, data pipelines, and intelligent solutions
               </p>
             </div>
 
             <p className="text-base sm:text-lg text-gray-700 dark:text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              I build modern web applications using React, Node.js, and
-              cutting-edge technologies. From full-stack development to UI/UX
-              design, I love creating experiences that make a difference.
+              Specializing in Python backend architecture and Applied AI / Machine Learning. Currently engineering enterprise workflows and automated systems at Silent Infotech, while actively building and experimenting with predictive ML models and intelligent AI tools to solve real-world problems.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 justify-center lg:justify-start">

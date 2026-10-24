@@ -6,8 +6,8 @@ import BackgroundAnimation from "@/components/BackgroundAnimation";
 import "../index.css";
 
 export const metadata: Metadata = {
-  title: "Divyesh-Gangera-Portfolio",
-  description: "Divyesh Gangera - Full Stack Developer Portfolio",
+  title: "Divyesh Gangera | Software Engineer",
+  description: "Divyesh Gangera - Software Engineer Portfolio specializing in Python, backend architecture, data pipelines, and Applied AI solutions.",
 };
 
 export default function RootLayout({

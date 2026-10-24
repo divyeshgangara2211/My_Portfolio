@@ -28,67 +28,58 @@ const AboutSection = () => {
             </span>
           </h2>
           <p className="text-base sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Passionate Computer Engineering student building innovative
-            solutions
+            Software Engineer specializing in Python, scalable backend architectures, and Applied AI solutions
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center mb-12 sm:mb-20">
           {/* Left Content */}
           <div className="space-y-6">
-            <div className="flex items-start space-x-3">
-              <span className="text-2xl">😊</span>
+            <div className="flex items-start space-x-3.5">
+              <span className="text-2xl mt-0.5">💼</span>
               <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                I was born and raised in India.
+                I am a <strong>Software Engineer</strong> at <strong>Silent Infotech</strong>, specializing in <strong>Python</strong>, backend architecture, and database engineering. I design and implement automated backend workflows, custom enterprise modules, and scalable data-driven services.
               </p>
             </div>
 
-            <div className="flex items-start space-x-3">
-              <span className="text-2xl">💡</span>
+            <div className="flex items-start space-x-3.5">
+              <span className="text-2xl mt-0.5">🧠</span>
               <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                From a young age, I've always been fascinated by technology. I
-                especially enjoyed learning about technologies during my school
-                days, which sparked a deep interest in how things work behind
-                the scenes.
+                My core passion is exploring and building in <strong>Artificial Intelligence and Machine Learning</strong>. From predictive modeling and data pipelines with Scikit-learn, Pandas, and NumPy to NLP language translation and intelligent chatbots, I enjoy turning raw data into high-impact solutions.
               </p>
             </div>
 
-            <div className="flex items-start space-x-3">
-              <span className="text-2xl">🎓</span>
+            <div className="flex items-start space-x-3.5">
+              <span className="text-2xl mt-0.5">🎓</span>
               <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                This curiosity and enthusiasm naturally led me to pursue my
-                journey in higher education with a Bachelor's degree in Computer
-                Engineering 💻 at GEC Gandhinagar.
+                Holding a Bachelor's degree in <strong>Computer Engineering from GEC Gandhinagar</strong> and certified in Advanced AI & ML by BSE Institute & RUSA, I bridge solid theoretical fundamentals with hands-on production engineering.
               </p>
             </div>
 
-            <div className="flex items-start space-x-3">
-              <span className="text-2xl">🚀</span>
+            <div className="flex items-start space-x-3.5">
+              <span className="text-2xl mt-0.5">⚡</span>
               <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                Along the way, I’ve built multiple full-stack projects and
-                strengthened my problem-solving skills by solving 270+ LeetCode
-                problems in C++ with a rating of 1555, all while actively
-                exploring new tools and frameworks to create user-centric,
-                impactful solutions.
+                With <strong>270+ LeetCode problems solved (Rating: 1555)</strong> in C++, I bring deep analytical rigor, algorithmic efficiency, and an optimization-first mindset to every Python architecture and data pipeline I build.
               </p>
             </div>
 
             <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-slate-900 dark:to-slate-800 p-6 rounded-2xl border-l-4 border-blue-500 mt-8">
               <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4 flex items-center">
                 <span className="text-2xl mr-2">🎯</span>
-                Wanna know about my Hobbies ?
+                Beyond the Code
               </h3>
               <div className="space-y-3">
                 <div className="flex items-start space-x-3">
                   <span className="text-xl">♟️</span>
                   <p className="text-gray-700 dark:text-gray-300">
-                    When I am not coding you will find me playing chess or
-                    exercising.
+                    <strong>Strategy & Focus:</strong> Competitive chess player who loves tactical analysis and pattern recognition, combined with regular fitness for discipline.
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <span className="text-xl">📚</span>
-                  <p className="text-gray-700 dark:text-gray-300">I also love reading books.</p>
+                  <p className="text-gray-700 dark:text-gray-300">
+                    <strong>Continuous Learning:</strong> Constantly reading up on modern AI research, open-source Python libraries, and scalable system architectures.
+                  </p>
                 </div>
               </div>
             </div>
