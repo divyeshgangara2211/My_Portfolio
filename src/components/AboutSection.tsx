@@ -12,6 +12,8 @@ import {
   MapPin,
   ExternalLink,
   GraduationCap,
+  Cpu,
+  Sparkles,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -612,86 +614,440 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Academic Excellence 6th sem */}
-          <div className="bg-gradient-to-r from-green-50 to-teal-50 dark:from-slate-800 dark:to-green-900/20 rounded-3xl p-6 sm:p-8 mb-8 border-2 border-green-200 dark:border-green-800/50 hover:shadow-xl dark:hover:shadow-green-900/20 transition-all duration-300">
+          {/* Degree Milestone: B.E. Computer Engineering with Minor in IoT */}
+          <div className="bg-gradient-to-r from-amber-50 via-orange-50 to-amber-100/60 dark:from-slate-800 dark:via-amber-950/20 dark:to-orange-950/30 rounded-3xl p-6 sm:p-8 mb-8 border-2 border-amber-300 dark:border-amber-700/60 hover:shadow-xl dark:hover:shadow-amber-900/20 transition-all duration-300">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
                 <div className="flex items-center mb-4">
-                  <GraduationCap className="h-10 w-10 text-green-600 mr-4" />
+                  <div className="p-3 bg-amber-500/10 dark:bg-amber-500/20 rounded-2xl mr-4 border border-amber-300 dark:border-amber-700/50">
+                    <GraduationCap className="h-9 w-9 text-amber-600 dark:text-amber-400" />
+                  </div>
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      <h4 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                        Degree Milestone
+                      </h4>
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500 text-white shadow-sm">
+                        Graduated with Honors
+                      </span>
+                    </div>
+                    <div className="flex flex-wrap items-center text-amber-700 dark:text-amber-400 text-sm font-medium gap-y-1">
+                      <div className="flex items-center mr-3">
+                        <Calendar className="h-4 w-4 mr-1.5" />
+                        <span>May 2026</span>
+                      </div>
+                      <div className="flex items-center mr-3">
+                        <Award className="h-4 w-4 mr-1.5" />
+                        <span>B.E. Computer Engineering</span>
+                      </div>
+                      <div className="flex items-center">
+                        <Cpu className="h-4 w-4 mr-1.5" />
+                        <span className="font-semibold text-amber-800 dark:text-amber-300">Minor in IoT</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                  🎓 <strong>Graduated with Dual Specialization!</strong> Successfully completed Bachelor of Engineering in <strong>Computer Engineering</strong> along with a specialized <strong>Minor Degree in Internet of Things (IoT)</strong> with an impressive cumulative <strong>8.70 CGPA</strong> from Gujarat Technological University.
+                </p>
+
+                <div className="bg-amber-100/90 dark:bg-amber-950/40 border border-amber-200/80 dark:border-amber-800/40 p-4 rounded-xl mb-5">
+                  <p className="text-amber-950 dark:text-amber-200 font-semibold flex items-center">
+                    <Sparkles className="h-4 w-4 mr-1.5 text-amber-600 dark:text-amber-400" />
+                    Degree Credentials & Highlights:
+                  </p>
+                  <ul className="text-amber-900 dark:text-amber-300 mt-2 space-y-1.5 text-sm sm:text-base">
+                    <li>
+                      • <strong>Overall CGPA: 8.70</strong> — 0 Active / Total Backlogs
+                    </li>
+                    <li>
+                      • <strong>Major Degree:</strong> Bachelor of Engineering in Computer Engineering
+                    </li>
+                    <li>
+                      • <strong>Minor Degree:</strong> Internet of Things (IoT)
+                    </li>
+                    <li>
+                      • <strong>Accreditation:</strong> Gujarat Technological University (NAAC Accredited A+)
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  <button
+                    onClick={() => {
+                      const modal = document.createElement("div");
+                      modal.className =
+                        "fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4";
+                      modal.innerHTML = `
+                        <div class="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-2xl max-w-3xl max-h-[92vh] overflow-auto shadow-2xl border border-gray-200 dark:border-slate-700 w-full">
+                          <div class="flex items-center justify-between pb-3 mb-3 border-b border-gray-200 dark:border-slate-700">
+                            <h3 class="font-bold text-gray-800 dark:text-gray-100 text-base sm:text-lg">Provisional Degree Certificate</h3>
+                            <a href="/All_Certificate_Photos/Provisional Degree Certificate.pdf" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300 font-medium text-xs sm:text-sm rounded-lg hover:bg-amber-200 transition-colors inline-flex items-center gap-1">Open PDF ↗</a>
+                          </div>
+                          <img src="/All_Certificate_Photos/Provisional-Degree-Certificate.png" alt="Provisional Degree Certificate" class="w-full h-auto rounded-lg shadow-sm" />
+                          <div class="mt-4 flex justify-end">
+                            <button class="px-5 py-2 bg-amber-600 text-white font-medium rounded-lg hover:bg-amber-700 transition-colors cursor-pointer" onclick="this.closest('.fixed').remove()">Close</button>
+                          </div>
+                        </div>
+                      `;
+                      document.body.appendChild(modal);
+                    }}
+                    className="inline-flex items-center justify-center px-4 py-2.5 bg-amber-600 text-white rounded-xl hover:bg-amber-700 active:scale-95 transition-all font-medium text-sm shadow-sm hover:shadow-md hover:shadow-amber-500/20 w-full sm:w-auto cursor-pointer"
+                  >
+                    <GraduationCap className="h-4 w-4 mr-2" />
+                    View Degree Certificate
+                  </button>
+                  <a
+                    href="/All_Certificate_Photos/Provisional Degree Certificate.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-4 py-2.5 bg-amber-100 dark:bg-amber-950/50 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-700/60 rounded-xl hover:bg-amber-200 dark:hover:bg-amber-900/50 active:scale-95 transition-all font-medium text-sm w-full sm:w-auto"
+                  >
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    Open PDF
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 mt-6 lg:mt-0">
+                <div className="flex justify-center">
+                  <div className="text-7xl sm:text-8xl hover:scale-105 transition-transform duration-300 select-none">📜</div>
+                </div>
+                <div className="flex justify-center w-full">
+                  <div className="bg-amber-100/90 dark:bg-amber-950/40 border-2 border-amber-300/80 dark:border-amber-800/60 p-5 sm:p-6 rounded-2xl text-center w-full max-w-sm shadow-sm">
+                    <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500 text-white mb-2">
+                      Graduation Honors
+                    </span>
+                    <p className="text-amber-950 dark:text-amber-100 font-extrabold text-3xl">
+                      CGPA: 8.70
+                    </p>
+                    <p className="text-amber-800 dark:text-amber-300 font-bold text-base mt-1">
+                      B.E. Computer Engineering
+                    </p>
+                    <p className="text-amber-700 dark:text-amber-400 font-semibold text-sm mt-0.5">
+                      + Minor in Internet of Things (IoT)
+                    </p>
+                    <p className="text-amber-600/80 dark:text-amber-400/80 text-xs mt-2 border-t border-amber-200 dark:border-amber-800/40 pt-2">
+                      Gujarat Technological University (NAAC A+)
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Academic Excellence 8th sem */}
+          <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-slate-800 dark:to-emerald-900/20 rounded-3xl p-6 sm:p-8 mb-8 border-2 border-emerald-300 dark:border-emerald-800/60 hover:shadow-xl dark:hover:shadow-emerald-900/20 transition-all duration-300">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-2xl mr-4 border border-emerald-300 dark:border-emerald-700/50">
+                    <Trophy className="h-9 w-9 text-emerald-600 dark:text-emerald-400" />
+                  </div>
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      <h4 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                        Academic Excellence
+                      </h4>
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-600 text-white shadow-sm">
+                        Perfect 10 SPI
+                      </span>
+                    </div>
+                    <div className="flex items-center text-emerald-600 dark:text-emerald-400 text-sm font-medium">
+                      <Calendar className="h-4 w-4 mr-1.5" />
+                      <span>BE Semester 8 - May 2026</span>
+                      <Award className="h-4 w-4 ml-4 mr-1.5" />
+                      <span>Computer Engineering</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                  🏆 <strong>Flawless Final Semester Performance!</strong> Achieved a <strong>Perfect 10.00 SPI</strong> in Semester 8, culminating the engineering degree with highest distinction in the Major Industry Project / Internship with an <strong>AA Grade</strong>.
+                </p>
+
+                <div className="bg-emerald-100/90 dark:bg-emerald-950/40 border border-emerald-200/80 dark:border-emerald-900/40 p-4 rounded-xl mb-5">
+                  <p className="text-emerald-950 dark:text-emerald-200 font-semibold flex items-center">
+                    <Sparkles className="h-4 w-4 mr-1.5 text-emerald-600 dark:text-emerald-400" />
+                    Semester 8 Highlights:
+                  </p>
+                  <ul className="text-emerald-900 dark:text-emerald-300 mt-2 space-y-1.5 text-sm sm:text-base">
+                    <li>
+                      • <strong>SPI: 10.00</strong> — 8th Semester (Perfect Score)
+                    </li>
+                    <li>
+                      • <strong>Overall CGPA: 8.70</strong> | CPI: 8.17
+                    </li>
+                    <li>
+                      • <strong>Major Internship / Project: AA Grade</strong> (Highest Distinction)
+                    </li>
+                    <li>
+                      • Current & Total Backlogs: <strong>0</strong>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  <button
+                    onClick={() => {
+                      const modal = document.createElement("div");
+                      modal.className =
+                        "fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4";
+                      modal.innerHTML = `
+                        <div class="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-2xl max-w-3xl max-h-[92vh] overflow-auto shadow-2xl border border-gray-200 dark:border-slate-700 w-full">
+                          <div class="flex items-center justify-between pb-3 mb-3 border-b border-gray-200 dark:border-slate-700">
+                            <h3 class="font-bold text-gray-800 dark:text-gray-100 text-base sm:text-lg">BE Semester 8 Result</h3>
+                            <a href="/All_Certificate_Photos/Sem 8 Result.pdf" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 font-medium text-xs sm:text-sm rounded-lg hover:bg-emerald-200 transition-colors inline-flex items-center gap-1">Open PDF ↗</a>
+                          </div>
+                          <img src="/All_Certificate_Photos/8th-Sem-Result.png" alt="BE Semester 8 Result" class="w-full h-auto rounded-lg shadow-sm" />
+                          <div class="mt-4 flex justify-end">
+                            <button class="px-5 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors cursor-pointer" onclick="this.closest('.fixed').remove()">Close</button>
+                          </div>
+                        </div>
+                      `;
+                      document.body.appendChild(modal);
+                    }}
+                    className="inline-flex items-center justify-center px-4 py-2.5 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 active:scale-95 transition-all font-medium text-sm shadow-sm hover:shadow-md hover:shadow-emerald-500/20 w-full sm:w-auto cursor-pointer"
+                  >
+                    <GraduationCap className="h-4 w-4 mr-2" />
+                    View Result
+                  </button>
+                  <a
+                    href="/All_Certificate_Photos/Sem 8 Result.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-4 py-2.5 bg-emerald-100 dark:bg-emerald-950/50 text-emerald-900 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-700/60 rounded-xl hover:bg-emerald-200 dark:hover:bg-emerald-900/50 active:scale-95 transition-all font-medium text-sm w-full sm:w-auto"
+                  >
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    Open PDF
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 mt-6 lg:mt-0">
+                <div className="flex justify-center">
+                  <div className="text-7xl sm:text-8xl hover:scale-105 transition-transform duration-300 select-none">🏆</div>
+                </div>
+                <div className="flex justify-center w-full">
+                  <div className="bg-emerald-100/90 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800/60 p-5 sm:p-6 rounded-2xl text-center w-full max-w-sm shadow-sm">
+                    <p className="text-emerald-900 dark:text-emerald-200 font-extrabold text-3xl">
+                      SPI: 10.00
+                    </p>
+                    <p className="text-emerald-700 dark:text-emerald-300 font-bold mt-1">
+                      CGPA: 8.70
+                    </p>
+                    <p className="text-emerald-600/90 dark:text-emerald-400 font-medium text-sm mt-0.5">
+                      Computer Engineering
+                    </p>
+                    <p className="text-emerald-600/80 dark:text-emerald-400/80 text-xs sm:text-sm mt-1">
+                      Gujarat Technological University, Ahmedabad
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Academic Excellence 7th sem */}
+          <div className="bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-slate-800 dark:to-purple-900/20 rounded-3xl p-6 sm:p-8 mb-8 border-2 border-purple-200 dark:border-purple-800/50 hover:shadow-xl dark:hover:shadow-purple-900/20 transition-all duration-300">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-purple-500/10 dark:bg-purple-500/20 rounded-2xl mr-4 border border-purple-200 dark:border-purple-700/50">
+                    <GraduationCap className="h-9 w-9 text-purple-600 dark:text-purple-400" />
+                  </div>
                   <div>
                     <h4 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
                       Academic Excellence
                     </h4>
-                    <div className="flex items-center text-green-600 mt-2">
-                      <Calendar className="h-4 w-4 mr-2" />
-                      <span className="font-medium">
-                        BE Semester 6 - May 2025
-                      </span>
-                      <Award className="h-4 w-4 ml-4 mr-2" />
-                      <span className="font-medium">Computer Engineering</span>
+                    <div className="flex items-center text-purple-600 dark:text-purple-400 mt-1 text-sm font-medium">
+                      <Calendar className="h-4 w-4 mr-1.5" />
+                      <span>BE Semester 7 - December 2025</span>
+                      <Award className="h-4 w-4 ml-4 mr-1.5" />
+                      <span>Computer Engineering</span>
                     </div>
                   </div>
                 </div>
+
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                  🎓 <strong>Outstanding Academic Performance!</strong> Achieved
-                  a remarkable CGPA of 8.65, showcasing a strong grasp of core
-                  subjects and a commitment to excellence in my Computer
-                  Engineering studies.
+                  📈 <strong>High Academic Consistency in Core & Advanced Tech!</strong> Achieved <strong>8.13 SPI</strong> in Semester 7 while undertaking advanced curriculum including Artificial Intelligence, Machine Learning, Cloud Computing, and Information Security.
                 </p>
-                <div className="bg-green-100/90 dark:bg-green-950/40 border border-green-200/80 dark:border-green-900/40 p-4 rounded-xl mb-4">
-                  <p className="text-green-900 dark:text-green-200 font-semibold">
-                    📊 Academic Highlights:
+
+                <div className="bg-purple-100/90 dark:bg-purple-950/40 border border-purple-200/80 dark:border-purple-900/40 p-4 rounded-xl mb-5">
+                  <p className="text-purple-950 dark:text-purple-200 font-semibold flex items-center">
+                    <Sparkles className="h-4 w-4 mr-1.5 text-purple-600 dark:text-purple-400" />
+                    Semester 7 Highlights:
                   </p>
-                  <ul className="text-green-800 dark:text-green-300 mt-2 space-y-1">
+                  <ul className="text-purple-900 dark:text-purple-300 mt-2 space-y-1 text-sm sm:text-base">
                     <li>
-                      • <strong>CGPA: 8.65</strong> - 6th Semester
+                      • <strong>SPI: 8.13</strong> | <strong>CGPA: 8.47</strong> — 7th Semester
                     </li>
-                    <li>• Design Engineering II B: AB Grade</li>
-                    {/* <li>
-                      • Integrated Personality Development Course: AA Grade
-                    </li> */}
-                    <li>• Theory of Computation: AB Grade</li>
-                    <li>• Advanced Java Programming: AB Grade</li>
-                    <li>• Microprocessor and Interfacing: BC Grade</li>
-                    <li>• Data Mining: AB Grade</li>
-                    <li>• IOT and Applications: BB Grade</li>
+                    <li>• Summer Internship: <strong>AA Grade</strong></li>
+                    <li>• Mobile Application Development: <strong>AB Grade</strong></li>
+                    <li>• Artificial Intelligence & Cloud Computing: <strong>BB Grade</strong></li>
+                    <li>• Information Security & Compiler Design: <strong>BB Grade</strong></li>
+                    <li>• Machine Learning: <strong>BC Grade (Practical AA Grade)</strong></li>
                   </ul>
                 </div>
-                <button
-                  onClick={() => {
-                    const modal = document.createElement("div");
-                    modal.className =
-                      "fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4";
-                    // Academic 6th Sem Result Modal
-                    modal.innerHTML = `
-            <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl max-w-3xl max-h-[90vh] overflow-auto shadow-2xl border border-gray-200 dark:border-slate-700">
-              <img src="/All_Certificate_Photos/6th sem Result.png" alt="Academic 6th Sem Result" class="w-full h-auto rounded-lg" />
-              <div class="mt-4 flex justify-end">
-                <button class="px-5 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors cursor-pointer" onclick="this.closest('.fixed').remove()">Close</button>
+
+                <div className="flex flex-wrap gap-3">
+                  <button
+                    onClick={() => {
+                      const modal = document.createElement("div");
+                      modal.className =
+                        "fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4";
+                      modal.innerHTML = `
+                        <div class="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-2xl max-w-3xl max-h-[92vh] overflow-auto shadow-2xl border border-gray-200 dark:border-slate-700 w-full">
+                          <div class="flex items-center justify-between pb-3 mb-3 border-b border-gray-200 dark:border-slate-700">
+                            <h3 class="font-bold text-gray-800 dark:text-gray-100 text-base sm:text-lg">BE Semester 7 Result</h3>
+                            <a href="/All_Certificate_Photos/Sem 7 Result .pdf" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300 font-medium text-xs sm:text-sm rounded-lg hover:bg-purple-200 transition-colors inline-flex items-center gap-1">Open PDF ↗</a>
+                          </div>
+                          <img src="/All_Certificate_Photos/7th-Sem-Result.png" alt="BE Semester 7 Result" class="w-full h-auto rounded-lg shadow-sm" />
+                          <div class="mt-4 flex justify-end">
+                            <button class="px-5 py-2 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors cursor-pointer" onclick="this.closest('.fixed').remove()">Close</button>
+                          </div>
+                        </div>
+                      `;
+                      document.body.appendChild(modal);
+                    }}
+                    className="inline-flex items-center justify-center px-4 py-2.5 bg-purple-600 text-white rounded-xl hover:bg-purple-700 active:scale-95 transition-all font-medium text-sm shadow-sm hover:shadow-md hover:shadow-purple-500/20 w-full sm:w-auto cursor-pointer"
+                  >
+                    <GraduationCap className="h-4 w-4 mr-2" />
+                    View Result
+                  </button>
+                  <a
+                    href="/All_Certificate_Photos/Sem 7 Result .pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-4 py-2.5 bg-purple-100 dark:bg-purple-950/50 text-purple-900 dark:text-purple-200 border border-purple-300 dark:border-purple-700/60 rounded-xl hover:bg-purple-200 dark:hover:bg-purple-900/50 active:scale-95 transition-all font-medium text-sm w-full sm:w-auto"
+                  >
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    Open PDF
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 mt-6 lg:mt-0">
+                <div className="flex justify-center">
+                  <div className="text-7xl sm:text-8xl hover:scale-105 transition-transform duration-300 select-none">📊</div>
+                </div>
+                <div className="flex justify-center w-full">
+                  <div className="bg-purple-100/90 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800/40 p-5 sm:p-6 rounded-2xl text-center w-full max-w-sm shadow-sm">
+                    <p className="text-purple-900 dark:text-purple-200 font-extrabold text-3xl">
+                      SPI: 8.13
+                    </p>
+                    <p className="text-purple-700 dark:text-purple-300 font-bold mt-1">
+                      CGPA: 8.47
+                    </p>
+                    <p className="text-purple-600/90 dark:text-purple-400 font-medium text-sm mt-0.5">
+                      Computer Engineering
+                    </p>
+                    <p className="text-purple-600/80 dark:text-purple-400/80 text-xs sm:text-sm mt-1">
+                      Gujarat Technological University, Ahmedabad
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-          `;
-                    document.body.appendChild(modal);
-                  }}
-                  className="inline-flex items-center justify-center px-4 py-2.5 bg-green-600 text-white rounded-xl hover:bg-green-700 active:scale-95 transition-all font-medium text-sm shadow-sm hover:shadow-md hover:shadow-green-500/20 w-full sm:w-auto cursor-pointer"
-                >
-                  <GraduationCap className="h-4 w-4 mr-2" />
-                  View Result
-                </button>
+          </div>
+
+          {/* Academic Excellence 6th sem */}
+          <div className="bg-gradient-to-r from-teal-50 to-green-50 dark:from-slate-800 dark:to-teal-900/20 rounded-3xl p-6 sm:p-8 mb-8 border-2 border-teal-200 dark:border-teal-800/50 hover:shadow-xl dark:hover:shadow-teal-900/20 transition-all duration-300">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-teal-500/10 dark:bg-teal-500/20 rounded-2xl mr-4 border border-teal-200 dark:border-teal-700/50">
+                    <GraduationCap className="h-9 w-9 text-teal-600 dark:text-teal-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                      Academic Excellence
+                    </h4>
+                    <div className="flex items-center text-teal-600 dark:text-teal-400 mt-1 text-sm font-medium">
+                      <Calendar className="h-4 w-4 mr-1.5" />
+                      <span>BE Semester 6 - May 2025</span>
+                      <Award className="h-4 w-4 ml-4 mr-1.5" />
+                      <span>Computer Engineering</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                  🎓 <strong>Outstanding Academic Performance!</strong> Achieved a remarkable <strong>CGPA of 8.65</strong>, showcasing a strong grasp of core subjects and a commitment to excellence in Computer Engineering studies.
+                </p>
+
+                <div className="bg-teal-100/90 dark:bg-teal-950/40 border border-teal-200/80 dark:border-teal-900/40 p-4 rounded-xl mb-5">
+                  <p className="text-teal-950 dark:text-teal-200 font-semibold flex items-center">
+                    <Sparkles className="h-4 w-4 mr-1.5 text-teal-600 dark:text-teal-400" />
+                    Semester 6 Highlights:
+                  </p>
+                  <ul className="text-teal-900 dark:text-teal-300 mt-2 space-y-1 text-sm sm:text-base">
+                    <li>
+                      • <strong>SPI: 8.61</strong> | <strong>CGPA: 8.65</strong> — 6th Semester
+                    </li>
+                    <li>• Design Engineering II B: <strong>AB Grade</strong></li>
+                    <li>• Theory of Computation: <strong>AB Grade</strong></li>
+                    <li>• Advanced Java Programming: <strong>AB Grade</strong></li>
+                    <li>• Data Mining: <strong>AB Grade</strong></li>
+                    <li>• IOT and Applications: <strong>BB Grade</strong></li>
+                    <li>• Microprocessor and Interfacing: <strong>BC Grade</strong></li>
+                  </ul>
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  <button
+                    onClick={() => {
+                      const modal = document.createElement("div");
+                      modal.className =
+                        "fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4";
+                      modal.innerHTML = `
+                        <div class="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-2xl max-w-3xl max-h-[92vh] overflow-auto shadow-2xl border border-gray-200 dark:border-slate-700 w-full">
+                          <div class="flex items-center justify-between pb-3 mb-3 border-b border-gray-200 dark:border-slate-700">
+                            <h3 class="font-bold text-gray-800 dark:text-gray-100 text-base sm:text-lg">BE Semester 6 Result</h3>
+                            <a href="/All_Certificate_Photos/6th-Sem-Result.pdf" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-teal-100 text-teal-800 dark:bg-teal-900/40 dark:text-teal-300 font-medium text-xs sm:text-sm rounded-lg hover:bg-teal-200 transition-colors inline-flex items-center gap-1">Open PDF ↗</a>
+                          </div>
+                          <img src="/All_Certificate_Photos/6th sem Result.png" alt="BE Semester 6 Result" class="w-full h-auto rounded-lg shadow-sm" />
+                          <div class="mt-4 flex justify-end">
+                            <button class="px-5 py-2 bg-teal-600 text-white font-medium rounded-lg hover:bg-teal-700 transition-colors cursor-pointer" onclick="this.closest('.fixed').remove()">Close</button>
+                          </div>
+                        </div>
+                      `;
+                      document.body.appendChild(modal);
+                    }}
+                    className="inline-flex items-center justify-center px-4 py-2.5 bg-teal-600 text-white rounded-xl hover:bg-teal-700 active:scale-95 transition-all font-medium text-sm shadow-sm hover:shadow-md hover:shadow-teal-500/20 w-full sm:w-auto cursor-pointer"
+                  >
+                    <GraduationCap className="h-4 w-4 mr-2" />
+                    View Result
+                  </button>
+                  <a
+                    href="/All_Certificate_Photos/6th-Sem-Result.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-4 py-2.5 bg-teal-100 dark:bg-teal-950/50 text-teal-900 dark:text-teal-200 border border-teal-300 dark:border-teal-700/60 rounded-xl hover:bg-teal-200 dark:hover:bg-teal-900/50 active:scale-95 transition-all font-medium text-sm w-full sm:w-auto"
+                  >
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    Open PDF
+                  </a>
+                </div>
               </div>
+
               <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 mt-6 lg:mt-0">
                 <div className="flex justify-center">
                   <div className="text-7xl sm:text-8xl hover:scale-105 transition-transform duration-300 select-none">🎓</div>
                 </div>
                 <div className="flex justify-center w-full">
-                  <div className="bg-green-100/90 dark:bg-green-950/40 border border-green-200 dark:border-green-800/40 p-5 sm:p-6 rounded-2xl text-center w-full max-w-sm shadow-sm">
-                    <p className="text-green-900 dark:text-green-200 font-bold text-2xl">
+                  <div className="bg-teal-100/90 dark:bg-teal-950/40 border border-teal-200 dark:border-teal-800/40 p-5 sm:p-6 rounded-2xl text-center w-full max-w-sm shadow-sm">
+                    <p className="text-teal-900 dark:text-teal-200 font-extrabold text-3xl">
+                      SPI: 8.61
+                    </p>
+                    <p className="text-teal-700 dark:text-teal-300 font-bold mt-1">
                       CGPA: 8.65
                     </p>
-                    <p className="text-green-700 dark:text-green-300 font-semibold mt-1">
+                    <p className="text-teal-600/90 dark:text-teal-400 font-medium text-sm mt-0.5">
                       Computer Engineering
                     </p>
-                    <p className="text-green-600/80 dark:text-green-400/80 text-xs sm:text-sm mt-1">
+                    <p className="text-teal-600/80 dark:text-teal-400/80 text-xs sm:text-sm mt-1">
                       Gujarat Technological University, Ahmedabad
                     </p>
                   </div>
@@ -705,79 +1061,97 @@ const AboutSection = () => {
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
                 <div className="flex items-center mb-4">
-                  <GraduationCap className="h-10 w-10 text-blue-600 mr-4" />
+                  <div className="p-3 bg-blue-500/10 dark:bg-blue-500/20 rounded-2xl mr-4 border border-blue-200 dark:border-blue-700/50">
+                    <GraduationCap className="h-9 w-9 text-blue-600 dark:text-blue-400" />
+                  </div>
                   <div>
                     <h4 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
                       Academic Excellence
                     </h4>
-                    <div className="flex items-center text-blue-600 mt-2">
-                      <Calendar className="h-4 w-4 mr-2" />
-                      <span className="font-medium">
-                        BE Semester 5 - December 2024
-                      </span>
-                      <Award className="h-4 w-4 ml-4 mr-2" />
-                      <span className="font-medium">Computer Engineering</span>
+                    <div className="flex items-center text-blue-600 dark:text-blue-400 mt-1 text-sm font-medium">
+                      <Calendar className="h-4 w-4 mr-1.5" />
+                      <span>BE Semester 5 - December 2024</span>
+                      <Award className="h-4 w-4 ml-4 mr-1.5" />
+                      <span>Computer Engineering</span>
                     </div>
                   </div>
                 </div>
+
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                  🎓 <strong>Outstanding Academic Performance!</strong>{" "}
-                  Consistently maintaining excellent grades throughout my
-                  Computer Engineering journey. Achieved impressive CGPA of
-                  8.70, demonstrating strong understanding of core subjects and
-                  commitment to academic excellence.
+                  🎓 <strong>Outstanding Academic Performance!</strong> Consistently maintaining excellent grades throughout my Computer Engineering journey. Achieved an impressive <strong>CGPA of 8.70</strong>, demonstrating strong analytical fundamentals and commitment to academic excellence.
                 </p>
-                <div className="bg-blue-100/90 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-900/40 p-4 rounded-xl mb-4">
-                  <p className="text-blue-900 dark:text-blue-200 font-semibold">
-                    📊 Academic Highlights:
+
+                <div className="bg-blue-100/90 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-900/40 p-4 rounded-xl mb-5">
+                  <p className="text-blue-950 dark:text-blue-200 font-semibold flex items-center">
+                    <Sparkles className="h-4 w-4 mr-1.5 text-blue-600 dark:text-blue-400" />
+                    Semester 5 Highlights:
                   </p>
-                  <ul className="text-blue-800 dark:text-blue-300 mt-2 space-y-1">
+                  <ul className="text-blue-800 dark:text-blue-300 mt-2 space-y-1 text-sm sm:text-base">
                     <li>
-                      • <strong>CGPA: 8.70</strong> - 5th Semester
+                      • <strong>SPI: 8.70</strong> | <strong>CGPA: 8.70</strong> — 5th Semester
                     </li>
-                    <li>• Design Engineering - II A: AA Grade</li>
-                    <li>• Analysis and Design of Algorithms: AB Grade</li>
-                    <li>• Computer Networks: AB Grade</li>
-                    <li>• Software Engineering: BB Grade</li>
-                    <li>• Python for Data Science: BB Grade</li>
+                    <li>• Design Engineering - II A: <strong>AA Grade</strong></li>
+                    <li>• Analysis and Design of Algorithms: <strong>AB Grade</strong></li>
+                    <li>• Computer Networks: <strong>AB Grade</strong></li>
+                    <li>• Software Engineering: <strong>BB Grade</strong></li>
+                    <li>• Python for Data Science: <strong>BB Grade</strong></li>
                   </ul>
                 </div>
-                <button
-                  onClick={() => {
-                    const modal = document.createElement("div");
-                    modal.className =
-                      "fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4";
-                    // Academic 5th Sem Result Modal
-                    modal.innerHTML = `
-            <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl max-w-3xl max-h-[90vh] overflow-auto shadow-2xl border border-gray-200 dark:border-slate-700">
-              <img src="/All_Certificate_Photos/5th-Sem-Result.png" alt="Academic 5th Sem Result" class="w-full h-auto rounded-lg" />
-              <div class="mt-4 flex justify-end">
-                <button class="px-5 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors cursor-pointer" onclick="this.closest('.fixed').remove()">Close</button>
+
+                <div className="flex flex-wrap gap-3">
+                  <button
+                    onClick={() => {
+                      const modal = document.createElement("div");
+                      modal.className =
+                        "fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4";
+                      modal.innerHTML = `
+                        <div class="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-2xl max-w-3xl max-h-[92vh] overflow-auto shadow-2xl border border-gray-200 dark:border-slate-700 w-full">
+                          <div class="flex items-center justify-between pb-3 mb-3 border-b border-gray-200 dark:border-slate-700">
+                            <h3 class="font-bold text-gray-800 dark:text-gray-100 text-base sm:text-lg">BE Semester 5 Result</h3>
+                            <a href="/All_Certificate_Photos/5th-Sem-Result.pdf" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300 font-medium text-xs sm:text-sm rounded-lg hover:bg-blue-200 transition-colors inline-flex items-center gap-1">Open PDF ↗</a>
+                          </div>
+                          <img src="/All_Certificate_Photos/5th-Sem-Result.png" alt="BE Semester 5 Result" class="w-full h-auto rounded-lg shadow-sm" />
+                          <div class="mt-4 flex justify-end">
+                            <button class="px-5 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors cursor-pointer" onclick="this.closest('.fixed').remove()">Close</button>
+                          </div>
+                        </div>
+                      `;
+                      document.body.appendChild(modal);
+                    }}
+                    className="inline-flex items-center justify-center px-4 py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 active:scale-95 transition-all font-medium text-sm shadow-sm hover:shadow-md hover:shadow-blue-500/20 w-full sm:w-auto cursor-pointer"
+                  >
+                    <GraduationCap className="h-4 w-4 mr-2" />
+                    View Result
+                  </button>
+                  <a
+                    href="/All_Certificate_Photos/5th-Sem-Result.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-4 py-2.5 bg-blue-100 dark:bg-blue-950/50 text-blue-900 dark:text-blue-200 border border-blue-300 dark:border-blue-700/60 rounded-xl hover:bg-blue-200 dark:hover:bg-blue-900/50 active:scale-95 transition-all font-medium text-sm w-full sm:w-auto"
+                  >
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    Open PDF
+                  </a>
+                </div>
               </div>
-            </div>
-          `;
-                    document.body.appendChild(modal);
-                  }}
-                  className="inline-flex items-center justify-center px-4 py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 active:scale-95 transition-all font-medium text-sm shadow-sm hover:shadow-md hover:shadow-blue-500/20 w-full sm:w-auto cursor-pointer"
-                >
-                  <GraduationCap className="h-4 w-4 mr-2" />
-                  View Result
-                </button>
-              </div>
+
               <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 mt-6 lg:mt-0">
                 <div className="flex justify-center">
                   <div className="text-7xl sm:text-8xl hover:scale-105 transition-transform duration-300 select-none">🎓</div>
                 </div>
                 <div className="flex justify-center w-full">
                   <div className="bg-blue-100/90 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800/40 p-5 sm:p-6 rounded-2xl text-center w-full max-w-sm shadow-sm">
-                    <p className="text-blue-900 dark:text-blue-200 font-bold text-2xl">
+                    <p className="text-blue-900 dark:text-blue-200 font-extrabold text-3xl">
+                      SPI: 8.70
+                    </p>
+                    <p className="text-blue-700 dark:text-blue-300 font-bold mt-1">
                       CGPA: 8.70
                     </p>
-                    <p className="text-blue-700 dark:text-blue-300 font-semibold mt-1">
+                    <p className="text-blue-600/90 dark:text-blue-400 font-medium text-sm mt-0.5">
                       Computer Engineering
                     </p>
                     <p className="text-blue-600/80 dark:text-blue-400/80 text-xs sm:text-sm mt-1">
-                      Gujarat Technological University , Ahmedabad
+                      Gujarat Technological University, Ahmedabad
                     </p>
                   </div>
                 </div>
